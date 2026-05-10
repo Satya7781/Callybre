@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Packages - Callybre</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#ffffff',
+                        surface: '#f8fafc',
+                        primary: '#2563eb',
+                        primaryDark: '#1d4ed8',
+                        secondary: '#0d9488',
+                        textMain: '#09090b',
+                        textMuted: '#52525b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-surface text-textMain font-sans antialiased overflow-x-hidden selection:bg-primary/20 flex flex-col min-h-screen">
+
+    <!-- Simple Navbar -->
+    <div class="w-full pt-6 px-6 flex justify-center z-50 absolute top-0">
+        <nav class="py-2 px-6 md:px-8 bg-white/70 backdrop-blur-xl border border-white/40 shadow-sm rounded-full flex justify-between items-center w-full max-w-5xl">
+            <a href="index.html" class="cursor-pointer flex items-center h-8 md:h-10 hover:opacity-80">
+                <img src="logo.png" alt="Callybre Logo" class="h-full invert object-contain scale-[2] md:scale-[2.5] origin-left">
+            </a>
+            <a href="index.html" class="px-6 py-2 bg-textMain text-white rounded-full font-bold hover:bg-primary hover:scale-105 transition-all duration-300 text-sm">Back to Home</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-24 px-6 md:px-12 relative">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="text-center mb-20">
+                <h1 id="service-title" class="text-5xl md:text-7xl font-black mb-6 text-textMain tracking-tighter capitalize">Service Packages</h1>
+                <p class="text-textMuted text-xl font-medium max-w-2xl mx-auto">Choose a plan that fits your business needs. Start small with our basic package, or build exactly what you envision with our custom solutions.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Basic Package -->
+                <div class="bg-white p-10 md:p-12 rounded-[2.5rem] border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                    <span class="px-4 py-1.5 bg-blue-50 text-primary rounded-full text-xs font-black uppercase tracking-widest mb-6 w-max">Starter</span>
+                    <h3 class="text-4xl font-black text-textMain mb-2">Basic Package</h3>
+                    <div class="mb-8">
+                        <span class="text-3xl font-black text-textMain">Fixed Price</span>
+                        <p class="text-sm font-bold text-slate-400 mt-1">Perfect for getting started quickly.</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-10 flex-grow text-slate-600 font-medium">
+                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500 shrink-0"></i> <span>Core essential features included out-of-the-box.</span></li>
+                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500 shrink-0"></i> <span>Standardized design and layout structure.</span></li>
+                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500 shrink-0"></i> <span>Basic integrations and setup.</span></li>
+                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500 shrink-0"></i> <span>Standard 1-month post-launch support.</span></li>
+                        <li class="flex items-start gap-3 opacity-40"><i data-lucide="x" class="w-6 h-6 text-slate-400 shrink-0"></i> <span>No complex custom logic or bespoke API development.</span></li>
+                    </ul>
+                    
+                    <button class="w-full py-4 bg-slate-100 text-textMain rounded-full font-black hover:bg-slate-200 transition-colors tracking-wide border border-slate-200">
+                        Choose Basic
+                    </button>
+                </div>
+
+                <!-- Custom Package -->
+                <div class="bg-textMain p-10 md:p-12 rounded-[2.5rem] border border-slate-800 shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px] pointer-events-none"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <span class="px-4 py-1.5 bg-white/10 text-white rounded-full text-xs font-black uppercase tracking-widest mb-6 w-max border border-white/20">Premium</span>
+                        <h3 class="text-4xl font-black text-white mb-2">Custom Package</h3>
+                        <div class="mb-8">
+                            <span class="text-3xl font-black text-white">Variable Cost</span>
+                            <p class="text-sm font-bold text-slate-400 mt-1">Based on your specific requirements.</p>
+                        </div>
+                        
+                        <ul class="space-y-4 mb-10 flex-grow text-slate-300 font-medium">
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-primary shrink-0"></i> <span class="text-white">Fully tailored architecture and feature set.</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-primary shrink-0"></i> <span class="text-white">Bespoke UI/UX design matching your brand perfectly.</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-primary shrink-0"></i> <span class="text-white">Complex API integrations & third-party software linking.</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-primary shrink-0"></i> <span class="text-white">Scalable cloud hosting infrastructure setup.</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-primary shrink-0"></i> <span class="text-white">Dedicated long-term maintenance and priority support.</span></li>
+                        </ul>
+                        
+                        <button class="w-full py-4 bg-primary text-white rounded-full font-black hover:bg-primaryDark transition-colors tracking-wide shadow-lg">
+                            Book Consultation
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto py-8 text-center text-sm font-bold text-slate-500 border-t border-slate-200">
+        <p>&copy; 2026 Callybre. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+        
+        // Dynamic title based on URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const serviceName = urlParams.get('service');
+        if (serviceName) {
+            document.getElementById('service-title').textContent = serviceName + ' Packages';
+            document.title = serviceName + ' - Callybre Packages';
+        }
+    </script>
+</body>
+</html>
