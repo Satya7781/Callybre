@@ -46,6 +46,37 @@ body {
     transform: translateY(0);
 }
 
+/* Custom Timeline Reveals */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-left.active, 
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Special case for center dots which have absolute transform */
+.absolute.left-1\/2.reveal {
+    transform: translate(-50%, 20px) scale(0);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.absolute.left-1\/2.reveal.active {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 1;
+}
+
 /* Stagger Animations for Hero */
 .fade-up {
     opacity: 0;
@@ -196,4 +227,307 @@ section.bg-surface .marquee-container::after {
     background-color: #ffffff;
     border-color: rgba(79, 70, 229, 0.3);
     box-shadow: 0 20px 40px -15px rgba(79, 70, 229, 0.1);
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS (max-width: 767px)
+   ========================================================================== */
+/* ==========================================================================
+   MOBILE RESPONSIVENESS (max-width: 767px)
+   ========================================================================== */
+@media (max-width: 767px) {
+    /* 1. GLOBAL RESETS & SECTION SPACING */
+    html, body {
+        overflow-x: hidden !important;
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+
+    section {
+        padding-top: clamp(3rem, 10vw, 5rem) !important;
+        padding-bottom: clamp(3rem, 10vw, 5rem) !important;
+        content-visibility: auto; /* Performance optimization */
+    }
+
+    .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .container {
+        max-width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+
+    /* 2. TYPOGRAPHY OVERRIDES */
+    h1, .text-7xl, .text-6xl, .text-5xl {
+        font-size: clamp(2.25rem, 10vw, 3rem) !important;
+        line-height: 1.1 !important;
+        letter-spacing: -0.02em !important;
+    }
+
+    h2, .text-4xl, .text-8xl, .text-9xl {
+        font-size: clamp(1.85rem, 8vw, 2.5rem) !important;
+        line-height: 1.15 !important;
+    }
+
+    h3, .text-3xl {
+        font-size: clamp(1.5rem, 6vw, 1.85rem) !important;
+        line-height: 1.2 !important;
+    }
+
+    p, .text-xl, .text-2xl, .text-lg {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+    }
+
+    .text-sm {
+        font-size: 0.875rem !important;
+    }
+
+    /* 3. NAVIGATION (NAVBAR & MOBILE MENU) */
+    #navbar {
+        top: 1rem !important;
+        width: 92% !important;
+        padding: 0.6rem 1.25rem !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        z-index: 100 !important;
+    }
+
+    #navbar img {
+        height: 28px !important;
+        width: auto !important;
+        scale: 1.2 !important;
+        transform: none !important;
+        object-fit: contain !important;
+    }
+
+    #mobile-menu-panel {
+        max-width: 85% !important;
+    }
+
+    #mobile-menu a {
+        min-height: 48px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    /* 4. LAYOUT STACKING (GRIDS & FLEXBOXES) */
+    .grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .flex-row, .md\:flex-row, .lg\:flex-row {
+        flex-direction: column !important;
+    }
+
+    /* Hero Section Specifics */
+    #home {
+        min-height: auto !important;
+        padding-top: 9rem !important;
+        padding-bottom: 4rem !important;
+        text-align: center;
+    }
+
+    #home .flex-row, #home .sm\:flex-row {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        width: 100% !important;
+    }
+
+    #home a {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    /* Marquee Adjustments */
+    .tech-pill {
+        padding: 0.6rem 1.25rem !important;
+        font-size: 0.9rem !important;
+        margin: 0 0.5rem !important;
+        gap: 0.5rem !important;
+    }
+
+    .tech-pill svg {
+        width: 1rem !important;
+        height: 1rem !important;
+    }
+
+    /* Services Section */
+    #services .grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem !important;
+    }
+
+    #services button {
+        padding: 1.5rem !important;
+    }
+
+    /* Portfolio (Bento) Grid */
+    #portfolio .grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+
+    #portfolio .md\:col-span-8, #portfolio .md\:col-span-4 {
+        width: 100% !important;
+        min-height: 400px !important;
+    }
+
+    #portfolio .p-10, #portfolio .p-8 {
+        padding: 1.5rem !important;
+    }
+
+    /* About Us Sections */
+    #about .grid-cols-2, #about .lg\:grid-cols-4, #about .lg\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Timeline (Strictly Vertical) */
+    #about .relative .w-5\/12 {
+        width: 100% !important;
+        text-align: left !important;
+        padding-left: 2.5rem !important;
+        padding-right: 0 !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    #about .relative .absolute.left-1\/2 {
+        left: 0.75rem !important;
+        transform: translateX(0) !important;
+    }
+
+    #about .relative .flex.items-center.justify-between {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    #about .relative .w-5\/12.text-right {
+        text-align: left !important;
+    }
+
+    /* Leadership Grid */
+    #about .grid-cols-2 {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Blog Section */
+    #blog .grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    /* Contact Form & Info */
+    #contact .grid-cols-12 {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+
+    #contact .lg\:col-span-5, #contact .lg\:col-span-7 {
+        width: 100% !important;
+    }
+
+    form input, form select, form textarea {
+        font-size: 16px !important;
+        min-height: 48px !important;
+        padding: 1rem !important;
+    }
+
+    form button[type="submit"] {
+        width: 100% !important;
+        padding: 1.25rem !important;
+    }
+
+    /* Footer Section */
+    footer .grid {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+        text-align: center !important;
+    }
+
+    footer .grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    footer h2.text-9xl {
+        font-size: clamp(3.5rem, 15vw, 5rem) !important;
+        margin-top: 2rem;
+    }
+
+    footer .flex-row, footer .md\:w-auto {
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    footer .md\:justify-self-end {
+        justify-self: center !important;
+        width: 100% !important;
+    }
+
+    /* 5. TOUCH TARGETS & CLICKABLES */
+    a, button, select, input, .cursor-pointer {
+        min-height: 44px !important;
+        min-width: 44px !important;
+    }
+
+    .fixed.bottom-6 {
+        width: 3.5rem !important;
+        height: 3.5rem !important;
+    }
+
+    /* 6. MODAL & OVERLAY OPTIMIZATIONS */
+    #packageModal .max-w-5xl {
+        width: 95vw !important;
+        max-height: 85vh !important;
+        margin: auto !important;
+        border-radius: 1.5rem !important;
+    }
+
+    #packageModal .p-8 {
+        padding: 1.25rem !important;
+    }
+
+    #packageModal .grid-cols-1.lg\:grid-cols-2 {
+        gap: 3.5rem !important;
+    }
+
+    #modalServiceIcon {
+        width: 3.5rem !important;
+        height: 3.5rem !important;
+    }
+
+    /* Images & Media */
+    img, video, iframe {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* 8. LANDSCAPE MOBILE ADJUSTMENTS */
+@media (max-width: 767px) and (orientation: landscape) {
+    #home {
+        padding-top: 7rem !important;
+        padding-bottom: 3rem !important;
+    }
+    
+    #packageModal .max-h-\[85vh\] {
+        max-height: 90vh !important;
+    }
+    
+    footer h2.text-9xl {
+        font-size: 5rem !important;
+    }
+
+    section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
 }

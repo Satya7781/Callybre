@@ -30,9 +30,112 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@0.473.0/dist/umd/lucide.js"></script>
+    <style>
+        #mobile-menu, #mobile-menu * {
+            pointer-events: auto !important;
+        }
+        #mobile-menu.hidden {
+            display: none !important;
+        }
+        .pointer-events-none {
+            pointer-events: none !important;
+        }
+        .pointer-events-auto {
+            pointer-events: auto !important;
+        }
+    </style>
 </head>
 
 <body class="bg-background text-textMain font-sans antialiased overflow-hidden selection:bg-primary/20">
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black/60 backdrop-blur-md z-[9999] hidden pointer-events-auto" aria-hidden="true" style="pointer-events: auto !important;">
+        <div class="fixed right-0 top-0 h-full w-full max-w-sm bg-white shadow-2xl transform translate-x-full transition-transform duration-300 pointer-events-auto" id="mobile-menu-panel" style="pointer-events: auto !important;">
+            <!-- Header -->
+            <div class="p-6 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl flex items-center justify-center">
+                            <img src="logo.png" alt="Callybre Logo" class="h-6 invert object-contain">
+                        </div>
+                        <span class="text-xl font-black text-textMain">Callybre</span>
+                    </div>
+                    <button id="mobile-menu-close" type="button" class="w-12 h-12 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer pointer-events-auto" aria-label="Close menu" style="z-index: 100;">
+                        <i data-lucide="x" class="w-6 h-6 text-slate-600"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="p-6 space-y-2 pointer-events-auto">
+                <a href="#home" class="group flex items-center gap-4 px-4 py-4 text-lg font-bold text-textMain hover:text-primary hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 rounded-2xl transition-all duration-300 cursor-pointer pointer-events-auto">
+                    <div class="w-8 h-8 rounded-lg bg-indigo-100 group-hover:bg-indigo-600 flex items-center justify-center transition-colors">
+                        <i data-lucide="home" class="w-4 h-4 text-indigo-600 group-hover:text-white"></i>
+                    </div>
+                    <span>Home</span>
+                </a>
+                
+                <!-- Services Dropdown -->
+                <div class="space-y-1">
+                    <div class="flex items-center gap-4 px-4 py-3 text-lg font-bold text-textMain">
+                        <div class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center">
+                            <i data-lucide="briefcase" class="w-4 h-4 text-purple-600"></i>
+                        </div>
+                        <span>Services</span>
+                    </div>
+                    <div class="ml-12 space-y-1">
+                        <a href="#services" onclick="toggleServices('it')" class="block px-4 py-3 text-textMuted hover:text-primary hover:bg-slate-50 rounded-xl transition-all duration-300 font-medium cursor-pointer pointer-events-auto">IT Consulting</a>
+                        <a href="#services" onclick="toggleServices('dm')" class="block px-4 py-3 text-textMuted hover:text-primary hover:bg-slate-50 rounded-xl transition-all duration-300 font-medium cursor-pointer pointer-events-auto">Digital Marketing</a>
+                    </div>
+                </div>
+                
+                <a href="#portfolio" class="group flex items-center gap-4 px-4 py-4 text-lg font-bold text-textMain hover:text-primary hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 rounded-2xl transition-all duration-300 cursor-pointer pointer-events-auto">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-100 group-hover:bg-emerald-600 flex items-center justify-center transition-colors">
+                        <i data-lucide="folder" class="w-4 h-4 text-emerald-600 group-hover:text-white"></i>
+                    </div>
+                    <span>Portfolio</span>
+                </a>
+                
+                <a href="#about" class="group flex items-center gap-4 px-4 py-4 text-lg font-bold text-textMain hover:text-primary hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 rounded-2xl transition-all duration-300 cursor-pointer pointer-events-auto">
+                    <div class="w-8 h-8 rounded-lg bg-orange-100 group-hover:bg-orange-600 flex items-center justify-center transition-colors">
+                        <i data-lucide="users" class="w-4 h-4 text-orange-600 group-hover:text-white"></i>
+                    </div>
+                    <span>About Us</span>
+                </a>
+                
+                <a href="#blog" class="group flex items-center gap-4 px-4 py-4 text-lg font-bold text-textMain hover:text-primary hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 rounded-2xl transition-all duration-300 cursor-pointer pointer-events-auto">
+                    <div class="w-8 h-8 rounded-lg bg-cyan-100 group-hover:bg-cyan-600 flex items-center justify-center transition-colors">
+                        <i data-lucide="file-text" class="w-4 h-4 text-cyan-600 group-hover:text-white"></i>
+                    </div>
+                    <span>Blog</span>
+                </a>
+                
+                <!-- CTA Button -->
+                <div class="pt-4 border-t border-slate-100">
+                    <a href="#contact" class="w-full flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-primary to-indigo-600 text-white rounded-2xl font-bold hover:from-indigo-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 cursor-pointer pointer-events-auto">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                        Contact Us
+                    </a>
+                </div>
+            </nav>
+            
+            <!-- Footer in Menu -->
+            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-r from-slate-50 to-white border-t border-slate-200">
+                <div class="flex items-center justify-center gap-4">
+                    <a href="https://www.instagram.com/callybre_?igsh=MXR0aWhoNDF3aXI0eA==" target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center hover:scale-110 transition-transform cursor-pointer pointer-events-auto">
+                        <i data-lucide="instagram" class="w-5 h-5 text-purple-600"></i>
+                    </a>
+                    <a href="https://wa.me/919111326119" target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center hover:scale-110 transition-transform cursor-pointer pointer-events-auto">
+                        <i data-lucide="message-circle" class="w-5 h-5 text-green-600"></i>
+                    </a>
+                    <a href="mailto:business@callybre.com" class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center hover:scale-110 transition-transform cursor-pointer pointer-events-auto">
+                        <i data-lucide="mail" class="w-5 h-5 text-blue-600"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Preloader -->
     <div id="preloader" class="fixed inset-0 z-[100] flex pointer-events-none overflow-hidden">
@@ -75,8 +178,8 @@
         </div>
 
     </div>
-    <!-- Navbar -->
-    <div class="fixed w-full top-6 z-50 px-6 flex justify-center pointer-events-none">
+    <!-- Navbar Wrapper -->
+    <div class="fixed w-full top-6 z-40 px-6 flex justify-center pointer-events-none">
         <nav id="navbar"
             class="pointer-events-auto transition-all duration-300 py-2 px-6 md:px-8 bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg shadow-slate-200/50 rounded-full flex justify-between items-center w-full max-w-5xl">
             <div class="cursor-pointer flex items-center h-8 md:h-10">
@@ -121,98 +224,11 @@
                     Us</a>
             </div>
 
-            <button class="md:hidden text-textMain focus:outline-none ml-4" id="mobile-menu-btn">
+            <button type="button" class="md:hidden text-textMain focus:outline-none ml-4 cursor-pointer" id="mobile-menu-btn">
                 <i data-lucide="menu"></i>
             </button>
         </nav>
         
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="fixed inset-0 bg-black/60 backdrop-blur-md z-40 hidden">
-            <div class="fixed right-0 top-0 h-full w-full max-w-sm bg-white shadow-2xl transform translate-x-full transition-transform duration-300" id="mobile-menu-panel">
-                <!-- Header -->
-                <div class="p-6 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl flex items-center justify-center">
-                                <img src="logo.png" alt="Callybre Logo" class="h-6 invert object-contain">
-                            </div>
-                            <span class="text-xl font-black text-textMain">Callybre</span>
-                        </div>
-                        <button onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-all duration-300 hover:scale-110">
-                            <i data-lucide="x" class="w-5 h-5 text-slate-600"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Navigation -->
-                <nav class="p-6 space-y-2">
-                    <a href="#home" class="group flex items-center gap-4 px-4 py-4 text-lg font-bold text-textMain hover:text-primary hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 rounded-2xl transition-all duration-300">
-                        <div class="w-8 h-8 rounded-lg bg-indigo-100 group-hover:bg-indigo-600 flex items-center justify-center transition-colors">
-                            <i data-lucide="home" class="w-4 h-4 text-indigo-600 group-hover:text-white"></i>
-                        </div>
-                        <span>Home</span>
-                    </a>
-                    
-                    <!-- Services Dropdown -->
-                    <div class="space-y-1">
-                        <div class="flex items-center gap-4 px-4 py-3 text-lg font-bold text-textMain">
-                            <div class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center">
-                                <i data-lucide="briefcase" class="w-4 h-4 text-purple-600"></i>
-                            </div>
-                            <span>Services</span>
-                        </div>
-                        <div class="ml-12 space-y-1">
-                            <a href="#services" onclick="toggleServices('it')" class="block px-4 py-3 text-textMuted hover:text-primary hover:bg-slate-50 rounded-xl transition-all duration-300 font-medium">IT Consulting</a>
-                            <a href="#services" onclick="toggleServices('dm')" class="block px-4 py-3 text-textMuted hover:text-primary hover:bg-slate-50 rounded-xl transition-all duration-300 font-medium">Digital Marketing</a>
-                        </div>
-                    </div>
-                    
-                    <a href="#portfolio" class="group flex items-center gap-4 px-4 py-4 text-lg font-bold text-textMain hover:text-primary hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 rounded-2xl transition-all duration-300">
-                        <div class="w-8 h-8 rounded-lg bg-emerald-100 group-hover:bg-emerald-600 flex items-center justify-center transition-colors">
-                            <i data-lucide="folder" class="w-4 h-4 text-emerald-600 group-hover:text-white"></i>
-                        </div>
-                        <span>Portfolio</span>
-                    </a>
-                    
-                    <a href="#about" class="group flex items-center gap-4 px-4 py-4 text-lg font-bold text-textMain hover:text-primary hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 rounded-2xl transition-all duration-300">
-                        <div class="w-8 h-8 rounded-lg bg-orange-100 group-hover:bg-orange-600 flex items-center justify-center transition-colors">
-                            <i data-lucide="users" class="w-4 h-4 text-orange-600 group-hover:text-white"></i>
-                        </div>
-                        <span>About Us</span>
-                    </a>
-                    
-                    <a href="#blog" class="group flex items-center gap-4 px-4 py-4 text-lg font-bold text-textMain hover:text-primary hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 rounded-2xl transition-all duration-300">
-                        <div class="w-8 h-8 rounded-lg bg-cyan-100 group-hover:bg-cyan-600 flex items-center justify-center transition-colors">
-                            <i data-lucide="file-text" class="w-4 h-4 text-cyan-600 group-hover:text-white"></i>
-                        </div>
-                        <span>Blog</span>
-                    </a>
-                    
-                    <!-- CTA Button -->
-                    <div class="pt-4 border-t border-slate-100">
-                        <a href="#contact" class="w-full flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-primary to-indigo-600 text-white rounded-2xl font-bold hover:from-indigo-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
-                            <i data-lucide="mail" class="w-5 h-5"></i>
-                            Contact Us
-                        </a>
-                    </div>
-                </nav>
-                
-                <!-- Footer in Menu -->
-                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-r from-slate-50 to-white border-t border-slate-200">
-                    <div class="flex items-center justify-center gap-4">
-                        <a href="https://www.instagram.com/callybre_?igsh=MXR0aWhoNDF3aXI0eA==" target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center hover:scale-110 transition-transform">
-                            <i data-lucide="instagram" class="w-5 h-5 text-purple-600"></i>
-                        </a>
-                        <a href="https://wa.me/919111326119" target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center hover:scale-110 transition-transform">
-                            <i data-lucide="message-circle" class="w-5 h-5 text-green-600"></i>
-                        </a>
-                        <a href="mailto:business@callybre.com" class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center hover:scale-110 transition-transform">
-                            <i data-lucide="mail" class="w-5 h-5 text-blue-600"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Hero Section -->
@@ -228,7 +244,7 @@
             class="absolute bottom-[-10%] left-[30%] w-[60%] h-[60%] bg-cyan-300 rounded-full blur-[150px] opacity-20 pointer-events-none mix-blend-multiply">
         </div>
         <div
-            class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none z-0 mix-blend-overlay">
+            class="absolute inset-0 bg-[url('noise.svg')] opacity-[0.03] pointer-events-none z-0 mix-blend-overlay">
         </div>
         <div class="absolute inset-0 bg-gradient-to-b from-white/10 via-white/50 to-white pointer-events-none z-0">
         </div>
@@ -462,7 +478,7 @@
                         IT Consulting Services</h3>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                     <button onclick="openPackageModal('Web Development', 'code', 'indigo')"
                         class="bg-white/60 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-white/60 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(79,70,229,0.25)] hover:border-indigo-300 hover:-translate-y-2 transition-all duration-500 group flex flex-col gap-4 sm:gap-6 relative overflow-hidden text-left w-full">
                         <div
@@ -679,7 +695,7 @@
                     Digital Marketing</h3>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 <button onclick="openPackageModal('Video Production', 'camera', 'emerald')"
                     class="bg-white/60 backdrop-blur-xl p-8 rounded-3xl border border-white/60 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.25)] hover:border-emerald-300 hover:-translate-y-2 transition-all duration-500 group flex flex-col gap-6 relative overflow-hidden text-left w-full">
                     <div
@@ -1115,22 +1131,22 @@
                     <div class="space-y-12">
                         <!-- 2016 - Founded -->
                         <div class="relative flex items-center justify-between">
-                            <div class="w-5/12 text-right pr-8">
+                            <div class="w-5/12 text-right pr-8 reveal-left">
                                 <div class="bg-white p-6 rounded-2xl border border-indigo-200 hover:shadow-lg transition-all duration-300">
                                     <h4 class="text-xl font-bold text-indigo-600 mb-2">2016</h4>
                                     <h5 class="text-lg font-bold text-textMain mb-2">Company Founded</h5>
                                     <p class="text-textMuted text-sm font-medium">Started with a small team of passionate developers with a big vision.</p>
                                 </div>
                             </div>
-                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-indigo-600 rounded-full border-4 border-white shadow-lg"></div>
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-indigo-600 rounded-full border-4 border-white shadow-lg reveal scale-0 active:scale-100"></div>
                             <div class="w-5/12"></div>
                         </div>
 
                         <!-- 2018 - First Major Milestone -->
                         <div class="relative flex items-center justify-between">
                             <div class="w-5/12"></div>
-                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div>
-                            <div class="w-5/12 pl-8">
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-purple-600 rounded-full border-4 border-white shadow-lg reveal scale-0 active:scale-100"></div>
+                            <div class="w-5/12 pl-8 reveal-right">
                                 <div class="bg-white p-6 rounded-2xl border border-purple-200 hover:shadow-lg transition-all duration-300">
                                     <h4 class="text-xl font-bold text-purple-600 mb-2">2018</h4>
                                     <h5 class="text-lg font-bold text-textMain mb-2">100+ Projects Delivered</h5>
@@ -1141,22 +1157,22 @@
 
                         <!-- 2020 - Innovation Award -->
                         <div class="relative flex items-center justify-between">
-                            <div class="w-5/12 text-right pr-8">
+                            <div class="w-5/12 text-right pr-8 reveal-left">
                                 <div class="bg-white p-6 rounded-2xl border border-emerald-200 hover:shadow-lg transition-all duration-300">
                                     <h4 class="text-xl font-bold text-emerald-600 mb-2">2020</h4>
                                     <h5 class="text-lg font-bold text-textMain mb-2">Innovation Excellence Award</h5>
                                     <p class="text-textMuted text-sm font-medium">Recognized for groundbreaking solutions in digital transformation.</p>
                                 </div>
                             </div>
-                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-emerald-600 rounded-full border-4 border-white shadow-lg"></div>
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-emerald-600 rounded-full border-4 border-white shadow-lg reveal scale-0 active:scale-100"></div>
                             <div class="w-5/12"></div>
                         </div>
 
                         <!-- 2022 - Global Expansion -->
                         <div class="relative flex items-center justify-between">
                             <div class="w-5/12"></div>
-                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-orange-600 rounded-full border-4 border-white shadow-lg"></div>
-                            <div class="w-5/12 pl-8">
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-orange-600 rounded-full border-4 border-white shadow-lg reveal scale-0 active:scale-100"></div>
+                            <div class="w-5/12 pl-8 reveal-right">
                                 <div class="bg-white p-6 rounded-2xl border border-orange-200 hover:shadow-lg transition-all duration-300">
                                     <h4 class="text-xl font-bold text-orange-600 mb-2">2022</h4>
                                     <h5 class="text-lg font-bold text-textMain mb-2">Global Expansion</h5>
@@ -1167,14 +1183,14 @@
 
                         <!-- 2024 - AI Integration -->
                         <div class="relative flex items-center justify-between">
-                            <div class="w-5/12 text-right pr-8">
+                            <div class="w-5/12 text-right pr-8 reveal-left">
                                 <div class="bg-white p-6 rounded-2xl border border-red-200 hover:shadow-lg transition-all duration-300">
                                     <h4 class="text-xl font-bold text-red-600 mb-2">2024</h4>
                                     <h5 class="text-lg font-bold text-textMain mb-2">AI & ML Leadership</h5>
                                     <p class="text-textMuted text-sm font-medium">Pioneered AI-driven solutions achieving 99.2% project success rate.</p>
                                 </div>
                             </div>
-                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-red-600 rounded-full border-4 border-white shadow-lg"></div>
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-red-600 rounded-full border-4 border-white shadow-lg reveal scale-0 active:scale-100"></div>
                             <div class="w-5/12"></div>
                         </div>
                     </div>
@@ -1184,7 +1200,7 @@
             <!-- Expertise Areas -->
             <div class="mb-20 reveal">
                 <h3 class="text-3xl md:text-4xl font-black text-textMain text-center mb-12">Our Expertise</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                         <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
                             <i data-lucide="smartphone" class="w-7 h-7 text-blue-600"></i>
@@ -1269,7 +1285,7 @@
             <!-- Client Testimonials -->
             <div class="mb-20 reveal">
                 <h3 class="text-3xl md:text-4xl font-black text-textMain text-center mb-12">What Our Clients Say</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="bg-gradient-to-br from-slate-50 to-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300">
                         <div class="flex items-center mb-4">
                             <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
@@ -1333,7 +1349,7 @@
             <!-- Team Leadership -->
             <div class="reveal">
                 <h3 class="text-3xl md:text-4xl font-black text-textMain text-center mb-12">Meet Our Leadership Team</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                     <!-- Tushar Shrivastava - Founder -->
                     <div class="text-center group bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                         <div class="relative mb-6 inline-block">
@@ -1757,7 +1773,7 @@
                 <p class="text-textMuted text-2xl font-medium max-w-2xl mx-auto">Stay ahead of the curve with our latest articles on technology, digital marketing, and scaling your business.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 reveal">
                 <!-- Blog Card 1 -->
                 <a href="javascript:void(0)" onclick="alert('Blog coming soon!')" class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(79,70,229,0.15)] border border-slate-200 hover:border-indigo-200 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
                     <div class="relative h-60 overflow-hidden">
@@ -2220,21 +2236,240 @@
         </svg>
     </a>
 
+
+    <!-- Service Packages Modal -->
+    <div id="packageModal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-md z-[200] hidden opacity-0 transition-all duration-300">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div
+                class="bg-white rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-300 shadow-2xl">
+                <!-- Modal Header -->
+                <div
+                    class="sticky top-0 bg-white/95 border-b border-slate-100 p-6 md:p-8 rounded-t-3xl z-30 backdrop-blur-md">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+                            <div id="modalServiceIcon"
+                                class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center shadow-lg border border-indigo-200 flex-shrink-0">
+                                <i data-lucide="code" class="w-7 h-7 md:w-8 md:h-8 text-indigo-600"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h3 id="modalServiceTitle"
+                                    class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">
+                                    Web Development</h3>
+                                <p class="text-textMuted text-sm md:text-base font-medium">
+                                    Choose the perfect package tailored to your business needs
+                                </p>
+                            </div>
+                        </div>
+                        <button onclick="closePackageModal()"
+                            class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-all duration-300 hover:scale-110 group flex-shrink-0">
+                            <i data-lucide="x" class="w-5 h-5 md:w-6 md:h-6 text-slate-600 group-hover:text-slate-800"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Packages Content -->
+                <div class="p-8 bg-gradient-to-br from-slate-50 via-white to-white">
+                    <!-- Package Cards -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                        <!-- Package 1 - Starter -->
+                        <div class="relative group">
+                            <!-- Popular Badge -->
+                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
+                                <div
+                                    class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                                    <i data-lucide="star" class="w-4 h-4"></i>
+                                    Most Popular
+                                </div>
+                            </div>
+
+                            <div
+                                class="h-full bg-gradient-to-br from-indigo-50 via-white to-purple-50 border-2 border-indigo-200 rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden flex flex-col">
+                                <!-- Background Decoration -->
+                                <div
+                                    class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-200/20 to-purple-200/20 rounded-full blur-2xl">
+                                </div>
+
+                                <div class="relative z-10 flex flex-col h-full">
+                                    <div class="flex items-center justify-between mb-6">
+                                        <div>
+                                            <h4 class="text-2xl font-black text-textMain mb-1">Starter Package</h4>
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                                <span class="text-green-600 text-xs font-bold uppercase tracking-wider">Ready to
+                                                    start</span>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="flex items-baseline justify-end">
+                                                <span id="starterPrice" class="text-4xl font-black text-indigo-600">₹39,999</span>
+                                            </div>
+                                            <span class="text-textMuted text-xs font-bold">ONE-TIME PAYMENT</span>
+                                        </div>
+                                    </div>
+
+                                    <p class="text-textMuted text-base font-medium mb-8 leading-relaxed">Perfect for
+                                        small businesses and startups looking to establish a professional digital
+                                        presence.</p>
+
+                                    <!-- Features List -->
+                                    <div id="starterFeatures" class="space-y-4 mb-10 flex-grow">
+                                        <!-- Dynamically populated -->
+                                    </div>
+
+                                    <button onclick="closePackageModalAndNavigateToContact()"
+                                        class="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl font-bold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3">
+                                        Choose Starter
+                                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Package 2 - Enterprise -->
+                        <div class="relative group">
+                            <!-- Enterprise Badge -->
+                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
+                                <div
+                                    class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                                    <i data-lucide="crown" class="w-4 h-4"></i>
+                                    Enterprise
+                                </div>
+                            </div>
+
+                            <div
+                                class="h-full bg-gradient-to-br from-emerald-50 via-white to-teal-50 border-2 border-emerald-200 rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden flex flex-col">
+                                <!-- Background Decoration -->
+                                <div
+                                    class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-200/20 to-teal-200/20 rounded-full blur-2xl">
+                                </div>
+
+                                <div class="relative z-10 flex flex-col h-full">
+                                    <div class="flex items-center justify-between mb-6">
+                                        <div>
+                                            <h4 class="text-2xl font-black text-textMain mb-1">Enterprise Package</h4>
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                                                <span
+                                                    class="text-emerald-600 text-xs font-bold uppercase tracking-wider">Custom
+                                                    Solution</span>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="flex items-baseline justify-end">
+                                                <span class="text-4xl font-black text-emerald-600">Custom</span>
+                                            </div>
+                                            <span class="text-textMuted text-xs font-bold">TAILORED PRICING</span>
+                                        </div>
+                                    </div>
+
+                                    <p class="text-textMuted text-base font-medium mb-8 leading-relaxed">Advanced
+                                        solutions for large-scale projects requiring comprehensive digital
+                                        transformation.</p>
+
+                                    <!-- Features List -->
+                                    <div id="enterpriseFeatures" class="space-y-4 mb-10 flex-grow">
+                                        <!-- Dynamically populated -->
+                                    </div>
+
+                                    <button onclick="closePackageModalAndNavigateToContact()"
+                                        class="w-full py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-2xl font-bold hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3">
+                                        Contact for Enterprise
+                                        <i data-lucide="mail" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack Section -->
+                    <div class="mt-12 pt-12 border-t border-slate-100">
+                        <div class="text-center mb-10">
+                            <h4 class="text-2xl font-black text-textMain mb-2">Technologies We Use</h4>
+                            <p class="text-textMuted font-medium">We leverage the most advanced tools to deliver
+                                world-class results</p>
+                        </div>
+                        <div id="modalTechStack" class="flex flex-wrap justify-center gap-4">
+                            <!-- Dynamically populated tech pills -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-        lucide.createIcons();
-        
-        // Package Modal Functions
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+
+            // Setup Package Modal Click Listener
+            const pModal = document.getElementById('packageModal');
+            if (pModal) {
+                pModal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closePackageModal();
+                    }
+                });
+            }
+
+            // Setup Contact Form
+            const cForm = document.getElementById('contactForm');
+            if (cForm) {
+                cForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const form = e.target;
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const submitText = document.getElementById('submitText');
+                    const loadingText = document.getElementById('loadingText');
+                    
+                    if (submitBtn && submitText && loadingText) {
+                        submitBtn.disabled = true;
+                        submitText.classList.add('hidden');
+                        loadingText.classList.remove('hidden');
+                    }
+                    
+                    try {
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: new FormData(form),
+                            headers: { 'Accept': 'application/json' }
+                        });
+                        if (response.ok) {
+                            form.reset();
+                            alert('Thank you! Your message has been sent successfully.');
+                        } else {
+                            alert('Oops! There was a problem submitting your form.');
+                        }
+                    } catch (error) {
+                        alert('Oops! There was a problem submitting your form.');
+                    } finally {
+                        if (submitBtn && submitText && loadingText) {
+                            submitBtn.disabled = false;
+                            submitText.classList.remove('hidden');
+                            loadingText.classList.add('hidden');
+                        }
+                    }
+                });
+            }
+        });
+
+        // Global Modal Functions
         function openPackageModal(serviceTitle, iconName, colorTheme) {
             const modal = document.getElementById('packageModal');
+            if (!modal) return;
+
             const modalTitle = document.getElementById('modalServiceTitle');
             const modalIcon = document.getElementById('modalServiceIcon');
+            const starterPrice = document.getElementById('starterPrice');
+            const starterFeatures = document.getElementById('starterFeatures');
+            const enterpriseFeatures = document.getElementById('enterpriseFeatures');
+            const techStack = document.getElementById('modalTechStack');
             
-            // Service-specific pricing and content
             const serviceData = {
                 'Web Development': {
                     starterPrice: '₹39,999',
+                    tech: ['React', 'Next.js', 'Node.js', 'Tailwind CSS', 'MongoDB', 'PostgreSQL'],
                     starterFeatures: [
                         'Professional responsive website design (5-7 pages)',
                         'Mobile-first responsive design for all devices',
@@ -2243,7 +2478,7 @@
                         '6 months technical support & maintenance',
                         'WordPress CMS with basic training',
                         'Google Analytics setup & integration',
-                        'Social media integration (Facebook, Instagram)'
+                        'Social media integration'
                     ],
                     enterpriseFeatures: [
                         'Unlimited pages with advanced custom functionality',
@@ -2253,300 +2488,361 @@
                         '24/7 priority support with dedicated account manager',
                         'Advanced analytics dashboard & reporting',
                         'Multi-language support & CDN integration',
-                        'Security audit & SSL certificate implementation'
+                        'Security audit & SSL implementation'
+                    ]
+                },
+                'Mobile App Development': {
+                    starterPrice: '₹49,999',
+                    tech: ['Flutter', 'React Native', 'Firebase', 'Dart', 'Javascript'],
+                    starterFeatures: [
+                        'Cross-platform mobile app (iOS & Android)',
+                        'Clean and intuitive UI/UX design',
+                        'User authentication and profile management',
+                        'Push notifications and real-time updates',
+                        'Basic offline storage functionality',
+                        'App Store and Play Store submission support',
+                        '3 months post-launch technical support',
+                        'Standard security implementation'
+                    ],
+                    enterpriseFeatures: [
+                        'Full-scale enterprise mobile solution',
+                        'Advanced custom animations and complex UI',
+                        'Integration with existing corporate systems',
+                        'Sophisticated offline data synchronization',
+                        'Scalable microservices backend integration',
+                        '24/7 dedicated support and maintenance',
+                        'In-depth app usage analytics and reporting',
+                        'High-level data encryption and security audits'
+                    ]
+                },
+                'AI Automation': {
+                    starterPrice: '₹59,999',
+                    tech: ['OpenAI', 'Python', 'LangChain', 'Pinecone', 'Zapier'],
+                    starterFeatures: [
+                        'Custom AI-powered chatbot for customer support',
+                        'Basic process automation for routine tasks',
+                        'Integration with 2 business software tools',
+                        'Standard natural language processing (NLP)',
+                        'User-friendly dashboard for AI interactions',
+                        '6 months AI model performance monitoring',
+                        'Technical documentation and user training',
+                        'Data privacy and security compliance'
+                    ],
+                    enterpriseFeatures: [
+                        'Enterprise-wide AI automation strategy',
+                        'Custom-trained LLMs on proprietary data',
+                        'Complex multi-step workflow automation',
+                        'Integration with unlimited enterprise systems',
+                        'Real-time predictive analytics engine',
+                        'Dedicated AI consultant and 24/7 support',
+                        'Advanced AI governance and ethical auditing',
+                        'Continuous model retraining and optimization'
                     ]
                 },
                 'SEO Services': {
                     starterPrice: '₹19,999',
+                    tech: ['SEMrush', 'Google Search Console', 'Ahrefs', 'Screaming Frog'],
                     starterFeatures: [
                         'Comprehensive website SEO audit & analysis',
                         'On-page optimization for 15-20 pages',
                         'Keyword research & competitor analysis',
                         'Local SEO setup with Google My Business',
-                        '6 months monthly SEO reports & tracking',
-                        'Basic link building & outreach',
-                        'Content optimization for target keywords',
-                        'Technical SEO fixes & improvements'
+                        'Monthly SEO performance reports',
+                        'Basic link building and content optimization',
+                        'Google Analytics configuration',
+                        '6 months technical SEO support'
                     ],
                     enterpriseFeatures: [
-                        'Advanced SEO for unlimited pages & content',
-                        'Custom SEO strategy with dedicated consultant',
-                        'Advanced link building & digital PR campaigns',
-                        'International SEO & multi-language optimization',
-                        '24/7 SEO monitoring & dedicated account manager',
-                        'Advanced competitor analysis & market research',
-                        'Content marketing strategy & implementation',
-                        'Conversion rate optimization & A/B testing'
+                        'Advanced global SEO strategy and execution',
+                        'Unlimited page optimization and link building',
+                        'Sophisticated content marketing strategy',
+                        'International SEO and multi-lingual setup',
+                        'Dedicated SEO manager and priority support',
+                        'Conversion rate optimization (CRO) audits',
+                        'Advanced competitor intelligence tracking',
+                        'Weekly strategy sessions and deep-dive reporting'
                     ]
                 },
                 'UI/UX Design': {
                     starterPrice: '₹24,999',
+                    tech: ['Figma', 'Adobe XD', 'Framer', 'Sketch'],
                     starterFeatures: [
-                        'Complete UI/UX design for website or app',
-                        'User research & persona development',
-                        'Wireframing & prototyping (Figma)',
-                        'Responsive design for all devices',
-                        'Design system & component library',
-                        'User testing & feedback integration',
-                        '3 months design support & revisions',
-                        'Handoff to developers with specifications'
+                        'Complete UI/UX design for a 10-page website',
+                        'Interactive high-fidelity Figma prototype',
+                        'User persona development and journey mapping',
+                        'Responsive design for desktop and mobile',
+                        'Basic design system and component library',
+                        'Developer handoff documentation',
+                        '3 rounds of design revisions',
+                        'Consistent brand visual identity implementation'
                     ],
                     enterpriseFeatures: [
-                        'Complete design system for multiple products',
-                        'Advanced user research with analytics',
-                        'Interactive prototypes with animations',
-                        'Cross-platform design consistency',
-                        '12 months dedicated design support',
-                        'A/B testing & conversion optimization',
-                        'Brand identity & visual guidelines',
-                        'Design thinking workshops & training'
+                        'Full-scale enterprise design system',
+                        'UX research and in-depth user testing sessions',
+                        'Complex interactive animations and transitions',
+                        'Cross-platform design strategy (Web & Apps)',
+                        'Accessibility audit and WCAG compliance',
+                        'Unlimited revisions and ongoing design support',
+                        'Dedicated lead designer for your project',
+                        'Design thinking workshops and strategy consulting'
                     ]
                 },
                 'Cloud & DevOps': {
                     starterPrice: '₹44,999',
+                    tech: ['AWS', 'Docker', 'Kubernetes', 'Jenkins', 'Terraform'],
                     starterFeatures: [
-                        'Cloud infrastructure setup (AWS/Azure/GCP)',
-                        'CI/CD pipeline implementation',
-                        'Container deployment with Docker',
-                        'Basic monitoring & alerting setup',
-                        'Automated backup & disaster recovery',
-                        '6 months infrastructure support',
-                        'Security best practices implementation',
-                        'Performance optimization & scaling'
+                        'Cloud infrastructure setup on AWS or Azure',
+                        'Basic CI/CD pipeline for automated deployment',
+                        'Containerization of up to 3 applications',
+                        'Standard server monitoring and alerting',
+                        'Managed backup and disaster recovery setup',
+                        '6 months cloud infrastructure maintenance',
+                        'Infrastructure as Code (IaC) implementation',
+                        'Cloud cost optimization audit'
                     ],
                     enterpriseFeatures: [
-                        'Multi-cloud architecture design',
-                        'Advanced Kubernetes orchestration',
-                        'Microservices architecture implementation',
-                        'Real-time monitoring with advanced analytics',
-                        '24/7 infrastructure monitoring & support',
-                        'DevOps culture transformation consulting',
-                        'Advanced security & compliance implementation',
-                        'Cost optimization & governance strategies'
+                        'High-availability multi-region cloud architecture',
+                        'Advanced zero-downtime deployment pipelines',
+                        'Full-scale Kubernetes cluster orchestration',
+                        'Real-time observability and logging stack',
+                        '24/7 infrastructure monitoring and incident response',
+                        'Comprehensive security hardening and compliance',
+                        'Dedicated DevOps engineer and monthly consulting',
+                        'Custom disaster recovery and failover automation'
                     ]
                 },
                 'Big Data Analytics': {
                     starterPrice: '₹54,999',
+                    tech: ['Python', 'Spark', 'Hadoop', 'Tableau', 'Power BI'],
                     starterFeatures: [
-                        'Data pipeline setup & integration',
-                        'Business intelligence dashboard creation',
-                        'Data warehouse implementation',
-                        'Basic predictive analytics models',
-                        'Data visualization with modern tools',
-                        '6 months data maintenance support',
-                        'Data quality assessment & cleaning',
-                        'Monthly performance reports & insights'
+                        'Initial data assessment and cleaning',
+                        'Setup of 3 automated data pipelines',
+                        'Interactive BI dashboard in Tableau/Power BI',
+                        'Basic exploratory data analysis (EDA)',
+                        'Monthly data performance reporting',
+                        '6 months data pipeline support',
+                        'Standard data warehouse implementation',
+                        'Stakeholder training on dashboard usage'
                     ],
                     enterpriseFeatures: [
-                        'Enterprise data lake implementation',
-                        'Advanced machine learning models',
-                        'Real-time analytics & streaming data',
-                        'Custom AI-powered insights engine',
-                        '24/7 data monitoring & support',
-                        'Data governance & compliance framework',
-                        'Advanced data security & encryption',
-                        'Custom analytics training for your team'
+                        'Enterprise data lake and warehouse strategy',
+                        'Advanced real-time data streaming analytics',
+                        'Custom machine learning models for forecasting',
+                        'Complex multi-source data integration',
+                        '24/7 data monitoring and pipeline troubleshooting',
+                        'Dedicated data scientist for ongoing insights',
+                        'Advanced data governance and security frameworks',
+                        'Customized executive reporting and presentations'
                     ]
                 },
                 'System Design': {
                     starterPrice: '₹34,999',
+                    tech: ['Distributed Systems', 'Microservices', 'Redis', 'Kafka'],
                     starterFeatures: [
-                        'System architecture design & documentation',
-                        'Scalability planning & capacity design',
-                        'Database schema design & optimization',
-                        'API design & integration patterns',
-                        'Security architecture implementation',
-                        'Performance optimization strategies',
-                        '6 months architectural support',
-                        'Technical documentation & handoff'
+                        'Architecture design for a scalable application',
+                        'Database schema design and normalization',
+                        'API design and documentation (Swagger/OpenAPI)',
+                        'Scalability roadmap and capacity planning',
+                        'Basic load balancing and caching strategy',
+                        'Technical documentation and design handoff',
+                        '4 months architectural consultation',
+                        'Security architecture best practices'
                     ],
                     enterpriseFeatures: [
-                        'Enterprise architecture transformation',
-                        'Microservices architecture design',
-                        'Distributed system implementation',
-                        'Advanced security & compliance design',
-                        '24/7 architectural consultation',
-                        'System integration & migration planning',
-                        'Cloud-native architecture design',
-                        'Architecture review & optimization workshops'
+                        'Complex distributed system architecture design',
+                        'Microservices transformation and orchestration',
+                        'Advanced multi-level caching and data replication',
+                        'Event-driven architecture with message queues',
+                        'Comprehensive security audit and hardening',
+                        '24/7 priority architectural support',
+                        'Dedicated principal architect for the project',
+                        'Performance benchmarking and optimization audit'
                     ]
                 },
                 'Cyber Security': {
                     starterPrice: '₹29,999',
+                    tech: ['Kali Linux', 'Wireshark', 'Metasploit', 'Nessus'],
                     starterFeatures: [
-                        'Security audit & vulnerability assessment',
-                        'Firewall configuration & management',
-                        'SSL certificate implementation',
-                        'Security monitoring setup',
-                        'Employee security training program',
-                        '6 months security maintenance',
-                        'Incident response planning',
-                        'Compliance assessment (GDPR, CCPA)'
+                        'Vulnerability assessment and security audit',
+                        'Firewall and network security configuration',
+                        'Employee security awareness training session',
+                        'Monthly security status reporting',
+                        'SSL/TLS certificate implementation support',
+                        '6 months security monitoring and alerts',
+                        'Basic incident response planning',
+                        'Data privacy and compliance review'
                     ],
                     enterpriseFeatures: [
-                        'Advanced threat detection & response',
-                        'Zero-trust architecture implementation',
-                        'Penetration testing & ethical hacking',
-                        '24/7 security operations center (SOC)',
-                        'Advanced compliance management',
-                        'Security awareness program development',
-                        'Cloud security implementation',
-                        'Security consulting & strategy development'
+                        'Full-scale penetration testing and red teaming',
+                        'Advanced threat detection and response system',
+                        '24/7 Security Operations Center (SOC) support',
+                        'Comprehensive regulatory compliance (ISO/GDPR)',
+                        'Custom security software and tools development',
+                        'Dedicated security officer and rapid response',
+                        'High-level data encryption and IAM strategy',
+                        'Continuous security auditing and hardening'
                     ]
                 },
                 'AI Agents': {
                     starterPrice: '₹64,999',
+                    tech: ['OpenAI', 'LangChain', 'Python', 'PyTorch', 'TensorFlow'],
                     starterFeatures: [
-                        'Custom AI agent development (1-2 agents)',
-                        'Natural language processing integration',
-                        'Basic machine learning model training',
-                        'API integration with existing systems',
-                        '6 months AI agent maintenance',
-                        'Performance monitoring & analytics',
-                        'User interface for agent interaction',
-                        'Documentation & training materials'
+                        'Development of 1 custom autonomous AI agent',
+                        'Basic integration with existing API systems',
+                        'Task-specific model fine-tuning',
+                        'User interface for agent management',
+                        '6 months agent performance monitoring',
+                        'Standard security and safety guardrails',
+                        'Technical documentation and usage guide',
+                        'Cloud deployment and hosting setup'
                     ],
                     enterpriseFeatures: [
-                        'Multi-agent system development',
-                        'Advanced AI model customization',
-                        'Real-time learning & adaptation',
-                        'Enterprise system integration',
-                        '24/7 AI monitoring & support',
-                        'Custom AI model training pipeline',
-                        'Advanced analytics & reporting',
-                        'AI ethics & governance implementation'
+                        'Multi-agent collaborative system development',
+                        'Deep integration with core business databases',
+                        'Advanced continuous learning and adaptation',
+                        'Enterprise-grade agent governance and monitoring',
+                        '24/7 dedicated AI support and maintenance',
+                        'Custom proprietary model development',
+                        'Advanced safety auditing and ethical alignment',
+                        'Strategy consulting for AI agent integration'
                     ]
                 },
                 'API Integration': {
                     starterPrice: '₹22,999',
+                    tech: ['REST', 'GraphQL', 'Postman', 'Swagger'],
                     starterFeatures: [
-                        'API integration for 3-5 services',
-                        'RESTful API development & documentation',
-                        'Third-party service integration',
-                        'Data synchronization setup',
-                        '6 months integration support',
-                        'API testing & quality assurance',
-                        'Basic error handling & logging',
-                        'Integration documentation & training'
+                        'Integration of up to 3 third-party APIs',
+                        'Custom RESTful API development for internal use',
+                        'Standard API security (OAuth/API Keys)',
+                        'Detailed API documentation and testing',
+                        '4 months API maintenance and support',
+                        'Basic data synchronization and error handling',
+                        'Webhook implementation and management',
+                        'Performance monitoring for integrations'
                     ],
                     enterpriseFeatures: [
-                        'Enterprise API gateway implementation',
-                        'Custom API development for unlimited services',
-                        'Real-time data synchronization',
-                        'Advanced API security & authentication',
-                        '24/7 API monitoring & support',
-                        'API versioning & lifecycle management',
-                        'GraphQL implementation',
-                        'API analytics & usage insights'
+                        'Complex enterprise-scale API ecosystem',
+                        'GraphQL server implementation and schema design',
+                        'Advanced API gateway and management setup',
+                        'High-volume real-time data synchronization',
+                        '24/7 dedicated API monitoring and support',
+                        'Security hardening and penetration testing',
+                        'Custom SDK development for internal teams',
+                        'Global API versioning and lifecycle strategy'
                     ]
                 },
                 'Video Production': {
                     starterPrice: '₹27,999',
+                    tech: ['Premiere Pro', 'After Effects', 'DaVinci Resolve', '4K Cam'],
                     starterFeatures: [
-                        'Professional video production (2-3 videos)',
-                        '4K video shooting & editing',
-                        'Basic motion graphics & animations',
-                        'Professional voice-over & music',
-                        '3 rounds of revisions included',
-                        'Video optimization for social media',
-                        'YouTube channel setup & optimization',
-                        'Basic video SEO implementation'
+                        '3 high-quality brand videos (up to 2 mins each)',
+                        'Professional 4K shooting and sound recording',
+                        'Basic color correction and cinematic editing',
+                        'Licensed background music and basic titles',
+                        '3 rounds of revisions per video',
+                        'Optimization for various social platforms',
+                        '4 months digital asset storage',
+                        'Standard scriptwriting and storyboarding'
                     ],
                     enterpriseFeatures: [
-                        'Comprehensive video production (10+ videos)',
-                        'Cinematic quality production & editing',
-                        'Advanced visual effects & animations',
-                        'Custom music composition & sound design',
-                        'Unlimited revisions & creative direction',
-                        'Multi-platform video strategy',
-                        'Advanced video analytics & insights',
-                        'Video marketing campaign management'
+                        'Full-scale cinematic commercial production',
+                        'Advanced visual effects and motion graphics',
+                        'Custom music composition and sound design',
+                        'Multi-camera setup and aerial cinematography',
+                        'Unlimited revisions and creative direction',
+                        'Global distribution strategy and ad-cutting',
+                        'Dedicated production team and account manager',
+                        'Advanced marketing analytics for video ROI'
                     ]
                 },
                 'Media Management': {
                     starterPrice: '₹18,999',
+                    tech: ['Hootsuite', 'Canva', 'Buffer', 'Sprout Social'],
                     starterFeatures: [
-                        'Digital asset management system setup',
-                        'Media library organization & tagging',
-                        'Social media content scheduling',
-                        'Basic media analytics & reporting',
+                        'Management of 3 social media platforms',
+                        'Content calendar and 12 posts per month',
+                        'Basic graphic design for social content',
+                        'Monthly social performance reporting',
                         '6 months media management support',
-                        'Content calendar creation',
-                        'Brand guidelines implementation',
-                        'Media backup & storage setup'
+                        'Community management (basic comment replies)',
+                        'Social media profile optimization',
+                        'Standard hashtag and growth strategy'
                     ],
                     enterpriseFeatures: [
-                        'Enterprise digital asset management',
-                        'Multi-channel media distribution',
-                        'Advanced media analytics & insights',
-                        'Content management automation',
-                        '24/7 media monitoring & support',
-                        'Brand consistency management',
-                        'Advanced content personalization',
-                        'Media rights management & compliance'
+                        'Full-scale omni-channel media presence',
+                        'Advanced influencer and PR coordination',
+                        'High-volume content creation and scheduling',
+                        'Real-time social listening and crisis management',
+                        'Dedicated social media director and 24/7 support',
+                        'Advanced sentiment analysis and deep reporting',
+                        'Paid social advertising strategy and management',
+                        'Custom brand voice and aesthetic guidelines'
                     ]
                 },
                 'Video Editing': {
                     starterPrice: '₹15,999',
+                    tech: ['Final Cut Pro', 'Premiere Pro', 'After Effects'],
                     starterFeatures: [
-                        'Professional video editing (5-10 videos)',
-                        'Color correction & grading',
-                        'Audio enhancement & mixing',
-                        'Basic motion graphics & titles',
-                        'Format optimization for multiple platforms',
-                        '3 rounds of revisions included',
-                        'Subtitle & caption addition',
-                        'Video SEO optimization'
+                        'Professional editing for 8 short-form videos',
+                        'Basic color grading and audio leveling',
+                        'Dynamic subtitles and text overlays',
+                        'Royalty-free music and sound effects',
+                        '2 rounds of revisions per edit',
+                        'Standard file formatting for all platforms',
+                        '3 months project file backup',
+                        'Fast turnaround (48-hour delivery)'
                     ],
                     enterpriseFeatures: [
-                        'Advanced video editing (unlimited videos)',
-                        'Cinematic color grading & effects',
-                        'Professional sound design & mixing',
-                        'Custom motion graphics & animations',
-                        'Unlimited revisions & creative direction',
-                        'Multi-format delivery & optimization',
-                        'Advanced video analytics integration',
-                        'Video workflow automation'
+                        'Unlimited video editing for long/short form',
+                        'Advanced cinematic color grading and FX',
+                        'Professional sound design and audio engineering',
+                        'Complex motion graphics and 3D titles',
+                        'Unlimited revisions and creative consulting',
+                        'Enterprise-grade video workflow automation',
+                        'Dedicated lead editor for your brand',
+                        'Global format delivery and archiving'
                     ]
                 },
                 'Graphic Design': {
                     starterPrice: '₹19,999',
+                    tech: ['Illustrator', 'Photoshop', 'InDesign', 'Canva'],
                     starterFeatures: [
-                        'Complete brand identity package',
-                        'Logo design & variations',
-                        'Business card & letterhead design',
-                        'Social media graphics templates',
-                        'Basic marketing materials design',
-                        '3 rounds of revisions included',
-                        'Brand guidelines document',
-                        'File formats for all platforms'
+                        'Complete logo design and brand board',
+                        '5 custom social media templates',
+                        'Standard marketing collateral (brochure/flyer)',
+                        '3 rounds of revisions for each design',
+                        '6 months design asset management',
+                        'High-resolution print-ready files',
+                        'Digital assets optimized for web use',
+                        'Initial brand strategy consultation'
                     ],
                     enterpriseFeatures: [
-                        'Comprehensive brand transformation',
-                        'Advanced brand strategy development',
-                        'Complete marketing collateral suite',
-                        'Custom illustrations & graphics',
-                        'Unlimited revisions & creative direction',
-                        'Brand architecture & sub-brand strategy',
-                        'Advanced brand guidelines & training',
-                        'Brand performance tracking & analytics'
+                        'Full enterprise brand identity system',
+                        'Unlimited custom graphic design requests',
+                        'Advanced illustration and iconography set',
+                        'Complex packaging and environmental design',
+                        'Dedicated lead designer and 24/7 support',
+                        'Brand consistency audit and guidelines',
+                        'Advanced marketing campaign design strategy',
+                        'Interactive and animated digital assets'
                     ]
                 },
                 'SEO & AI Optimization': {
                     starterPrice: '₹32,999',
+                    tech: ['OpenAI API', 'SurferSEO', 'Jasper', 'Copy.ai'],
                     starterFeatures: [
-                        'Advanced SEO with AI-powered tools',
-                        'AI content optimization & generation',
-                        'Predictive keyword analysis',
-                        'AI-driven competitor analysis',
-                        'Automated content performance tracking',
-                        '6 months AI optimization support',
-                        'Voice search optimization',
-                        'AI-powered technical SEO audit'
+                        'AI-powered content audit and optimization',
+                        'Strategy for 10 AI-enhanced articles',
+                        'Predictive keyword research for 1 year',
+                        'AI-driven competitor gap analysis',
+                        '6 months performance tracking and reports',
+                        'Basic automated internal linking setup',
+                        'Google Search Console AI insights',
+                        'Technical SEO AI troubleshooting'
                     ],
                     enterpriseFeatures: [
-                        'Enterprise AI SEO strategy',
-                        'Custom AI content generation system',
+                        'Full-scale enterprise AI SEO transformation',
+                        'Custom AI content generation pipeline',
                         'Advanced predictive analytics',
                         'AI-powered user experience optimization',
                         '24/7 AI monitoring & optimization',
@@ -2557,175 +2853,165 @@
                 },
                 'Performance Marketing': {
                     starterPrice: '₹35,999',
+                    tech: ['Meta Ads', 'Google Ads', 'LinkedIn Ads', 'TikTok Ads'],
                     starterFeatures: [
-                        'Google Ads & Facebook Ads setup',
-                        'Campaign strategy & planning',
-                        'Ad creative design & copywriting',
-                        'Conversion tracking implementation',
-                        'Monthly performance reporting',
-                        '6 months campaign optimization',
-                        'A/B testing & improvement',
-                        'Budget management & allocation'
+                        'Management of 2 advertising channels',
+                        'Standard campaign setup and keyword research',
+                        'Basic ad creative and copywriting',
+                        'Monthly ROAS and performance reports',
+                        '6 months marketing optimization support',
+                        'Conversion pixel and tracking setup',
+                        'A/B testing for ad headlines and images',
+                        'Standard budget management'
                     ],
                     enterpriseFeatures: [
-                        'Multi-channel advertising strategy',
-                        'Advanced programmatic advertising',
-                        'Custom attribution modeling',
-                        'Real-time bid optimization',
-                        '24/7 campaign monitoring & support',
-                        'Advanced analytics & insights',
-                        'Marketing automation integration',
-                        'Performance marketing team training'
+                        'Comprehensive multi-channel marketing strategy',
+                        'Advanced programmatic and display advertising',
+                        'Custom attribution modeling and analysis',
+                        'Real-time automated bidding strategies',
+                        'Dedicated marketing director and 24/7 support',
+                        'Deep-dive ROI and growth analytics',
+                        'Advanced retargeting and funnel automation',
+                        'Creative strategy and high-volume ad production'
                     ]
                 },
                 'Influencer Marketing': {
                     starterPrice: '₹28,999',
+                    tech: ['Upfluence', 'Aspire', 'HypeAuditor', 'Modash'],
                     starterFeatures: [
-                        'Influencer identification & vetting (10-15 influencers)',
-                        'Campaign strategy & content planning',
-                        'Influencer outreach & negotiation',
-                        'Content approval & management',
-                        'Campaign tracking & analytics',
-                        '6 months campaign management',
-                        'Influencer relationship management',
-                        'Performance reporting & insights'
+                        'Identification of 15 micro-influencers',
+                        'Basic campaign strategy and brief creation',
+                        'Influencer outreach and contract management',
+                        'Standard campaign tracking and reporting',
+                        '4 months influencer relationship support',
+                        'Product seeding and fulfillment coordination',
+                        'Content usage rights negotiation',
+                        'Initial influencer fit analysis'
                     ],
                     enterpriseFeatures: [
-                        'Enterprise influencer marketing strategy',
-                        'Large-scale influencer network management',
-                        'Advanced influencer analytics platform',
-                        'Custom influencer marketplace development',
-                        '24/7 campaign monitoring & support',
-                        'Influencer loyalty program development',
-                        'Advanced content amplification strategy',
-                        'Influencer marketing team training'
+                        'Full-scale global influencer strategy',
+                        'Long-term brand ambassador network management',
+                        'Advanced predictive influencer performance analytics',
+                        'Creative campaign direction and event integration',
+                        'Dedicated influencer manager and 24/7 support',
+                        'Advanced ROI and brand sentiment tracking',
+                        'Legal and compliance management for global ads',
+                        'Whitelisting and paid amplification strategy'
                     ]
                 },
                 'Meta Advertising': {
                     starterPrice: '₹24,999',
+                    tech: ['Meta Business Suite', 'Pixel', 'Ads Manager'],
                     starterFeatures: [
-                        'Facebook & Instagram Ads setup',
-                        'Custom audience creation & targeting',
-                        'Ad creative design & copywriting',
-                        'Conversion tracking & pixel setup',
-                        'Monthly campaign optimization',
-                        '6 months advertising support',
-                        'A/B testing & performance improvement',
-                        'Budget management & ROI tracking'
+                        'Facebook and Instagram campaign setup',
+                        'Precise audience targeting and segmentation',
+                        'Basic ad creative set (3 images/1 video)',
+                        'Standard weekly performance reporting',
+                        '6 months ad account maintenance',
+                        'Meta Pixel and conversion API setup',
+                        'Basic retargeting campaign structure',
+                        'Initial budget and scaling strategy'
                     ],
                     enterpriseFeatures: [
-                        'Advanced Meta advertising strategy',
-                        'Custom audience segmentation',
-                        'Dynamic product ads implementation',
-                        'Advanced attribution modeling',
-                        '24/7 campaign monitoring & support',
-                        'Meta advertising automation',
-                        'Advanced analytics & insights',
-                        'Meta advertising team training'
+                        'Full-scale Meta enterprise advertising',
+                        'Advanced dynamic creative optimization (DCO)',
+                        'Complex multi-level funnel architecture',
+                        'Real-time bid adjustments and scaling',
+                        'Dedicated Meta specialist and 24/7 support',
+                        'Advanced custom audience modeling',
+                        'Deep attribution and incremental lift studies',
+                        'Creative production for high-volume ads'
                     ]
                 },
                 'Google Advertising': {
                     starterPrice: '₹26,999',
+                    tech: ['Google Ads Editor', 'Keyword Planner', 'Analytics'],
                     starterFeatures: [
-                        'Google Search & Display Ads setup',
-                        'Keyword research & campaign planning',
-                        'Ad copywriting & landing page optimization',
-                        'Conversion tracking implementation',
-                        'Monthly campaign optimization',
-                        '6 months Google Ads support',
-                        'Quality score improvement',
-                        'Budget management & performance tracking'
+                        'Google Search and Display campaign setup',
+                        'Extensive keyword research and selection',
+                        'Standard text and image ad creation',
+                        'Monthly lead and conversion reporting',
+                        '6 months Google Ads management',
+                        'Tag Manager and Analytics integration',
+                        'Basic remarketing list development',
+                        'Negative keyword management'
                     ],
                     enterpriseFeatures: [
-                        'Enterprise Google Ads strategy',
-                        'Advanced campaign automation',
-                        'Custom bidding strategy implementation',
-                        'Multi-account management',
-                        '24/7 Google Ads monitoring & support',
-                        'Advanced analytics & reporting',
-                        'Google Ads API integration',
-                        'Google Ads team training & certification'
+                        'Enterprise-scale Google Ads ecosystem',
+                        'Advanced YouTube and Shopping campaign management',
+                        'Performance Max strategy and optimization',
+                        'Real-time automated bid management',
+                        'Dedicated Google Ads expert and 24/7 support',
+                        'Advanced competitor bidding strategies',
+                        'Deep-dive attribution and conversion analysis',
+                        'Custom script development for ad automation'
                     ]
                 },
                 'Brand Collaboration': {
                     starterPrice: '₹31,999',
+                    tech: ['Brandwatch', 'Meltwater', 'Grin'],
                     starterFeatures: [
-                        'Brand partnership strategy development',
-                        'Partner identification & vetting (5-8 partners)',
-                        'Collaboration proposal creation',
-                        'Partnership negotiation & closing',
-                        'Campaign coordination & management',
-                        '6 months partnership support',
-                        'Partnership performance tracking',
-                        'Collaboration content creation'
+                        'Strategy for 3 co-branding partnerships',
+                        'Identification and outreach to 10 partners',
+                        'Standard partnership agreement templates',
+                        'Coordination of 2 joint marketing activities',
+                        '6 months collaboration support',
+                        'Standard partnership performance tracking',
+                        'Joint social media campaign planning',
+                        'Initial brand alignment analysis'
                     ],
                     enterpriseFeatures: [
-                        'Enterprise brand partnership strategy',
-                        'Large-scale partnership network management',
-                        'Advanced partnership analytics platform',
-                        'Custom collaboration workflow development',
-                        '24/7 partnership management & support',
-                        'Partnership automation system',
-                        'Advanced revenue sharing models',
-                        'Partnership team training & development'
+                        'Long-term enterprise collaboration strategy',
+                        'Management of global brand partner network',
+                        'Complex multi-party project coordination',
+                        'Strategic partnership for product development',
+                        'Dedicated partnership director and 24/7 support',
+                        'Advanced revenue sharing and tracking systems',
+                        'Legal and intellectual property coordination',
+                        'Exclusive high-level networking and intros'
                     ]
                 }
             };
             
             const data = serviceData[serviceTitle] || serviceData['Web Development'];
             
-            // Update modal content
-            modalTitle.textContent = serviceTitle;
-            
-            // Update icon
-            modalIcon.innerHTML = `<i data-lucide="${iconName}" class="w-6 h-6 text-${colorTheme}-600"></i>`;
-            modalIcon.className = `w-12 h-12 rounded-xl bg-${colorTheme}-100 flex items-center justify-center`;
-            
-            // Update pricing
-            const priceElement = modal.querySelector('.text-4xl.font-black.text-indigo-600');
-            if (priceElement) {
-                priceElement.textContent = data.starterPrice;
-                priceElement.className = `text-4xl font-black text-${colorTheme}-600`;
+            if (modalTitle) modalTitle.textContent = serviceTitle;
+            if (modalIcon) {
+                modalIcon.innerHTML = `<i data-lucide="${iconName}" class="w-8 h-8 text-${colorTheme}-600"></i>`;
+                modalIcon.className = `w-16 h-16 rounded-2xl bg-${colorTheme}-100 flex items-center justify-center shadow-lg border border-${colorTheme}-200`;
             }
-            
-            // Update starter features
-            const starterList = modal.querySelectorAll('.space-y-4.mb-8')[0];
-            if (starterList) {
-                starterList.innerHTML = data.starterFeatures.map(feature => `
+            if (starterPrice) {
+                starterPrice.textContent = data.starterPrice;
+                starterPrice.className = `text-4xl font-black text-${colorTheme}-600`;
+            }
+            if (starterFeatures) {
+                starterFeatures.innerHTML = data.starterFeatures.map(f => `
                     <div class="flex items-start gap-3 group/item">
                         <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-green-200 transition-colors">
                             <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
                         </div>
-                        <span class="text-textMain text-base font-medium leading-relaxed">${feature}</span>
+                        <span class="text-textMain text-base font-medium leading-relaxed">${f}</span>
                     </div>
                 `).join('');
             }
-            
-            // Update enterprise features
-            const enterpriseList = modal.querySelectorAll('.space-y-4.mb-8')[1];
-            if (enterpriseList) {
-                enterpriseList.innerHTML = data.enterpriseFeatures.map(feature => `
+            if (enterpriseFeatures) {
+                enterpriseFeatures.innerHTML = data.enterpriseFeatures.map(f => `
                     <div class="flex items-start gap-3 group/item">
-                        <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-emerald-200 transition-colors">
-                            <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i>
+                        <div class="w-6 h-6 rounded-full bg-${colorTheme === 'indigo' ? 'indigo' : 'emerald'}-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-${colorTheme === 'indigo' ? 'indigo' : 'emerald'}-200 transition-colors">
+                            <i data-lucide="check" class="w-4 h-4 text-${colorTheme === 'indigo' ? 'indigo' : 'emerald'}-600"></i>
                         </div>
-                        <span class="text-textMain text-base font-medium leading-relaxed">${feature}</span>
+                        <span class="text-textMain text-base font-medium leading-relaxed">${f}</span>
+                    </div>
+                `).join('');
+            }
+            if (techStack) {
+                techStack.innerHTML = data.tech.map(t => `
+                    <div class="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-textMuted hover:bg-white hover:border-${colorTheme}-400 hover:text-${colorTheme}-600 transition-all duration-300 cursor-default">
+                        ${t}
                     </div>
                 `).join('');
             }
             
-            // Update button colors for dynamic themes
-            const starterButton = modal.querySelector('.bg-gradient-to-r.from-indigo-600');
-            if (starterButton && colorTheme === 'emerald') {
-                starterButton.className = 'w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-4 rounded-2xl font-bold hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3';
-            }
-            
-            const enterpriseButton = modal.querySelector('.bg-gradient-to-r.from-emerald-600');
-            if (enterpriseButton && colorTheme === 'indigo') {
-                enterpriseButton.className = 'w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 rounded-2xl font-bold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3';
-            }
-            
-            // Show modal
             modal.classList.remove('hidden');
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
@@ -2733,22 +3019,19 @@
                 modal.querySelector('.transform').classList.add('scale-100');
             }, 10);
             
-            // Reinitialize lucide icons for new content
-            setTimeout(() => {
-                lucide.createIcons();
-            }, 100);
-            
-            // Prevent body scroll
+            setTimeout(() => lucide.createIcons(), 100);
             document.body.style.overflow = 'hidden';
         }
         
         function closePackageModal() {
             const modal = document.getElementById('packageModal');
-            
+            if (!modal) return;
             modal.classList.add('opacity-0');
-            modal.querySelector('.transform').classList.remove('scale-100');
-            modal.querySelector('.transform').classList.add('scale-95');
-            
+            const panel = modal.querySelector('.transform');
+            if (panel) {
+                panel.classList.remove('scale-100');
+                panel.classList.add('scale-95');
+            }
             setTimeout(() => {
                 modal.classList.add('hidden');
                 document.body.style.overflow = 'auto';
@@ -2756,487 +3039,18 @@
         }
         
         function closePackageModalAndNavigateToContact() {
-            // Close the modal first
             closePackageModal();
-            
-            // Wait for modal to close, then navigate to contact section
             setTimeout(() => {
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                    const offsetTop = contactSection.offsetTop - 80; // Account for fixed navbar
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Optionally, highlight the contact form or section
-                    contactSection.classList.add('ring-4', 'ring-indigo-200', 'ring-opacity-50');
-                    setTimeout(() => {
-                        contactSection.classList.remove('ring-4', 'ring-indigo-200', 'ring-opacity-50');
-                    }, 2000);
+                const contact = document.getElementById('contact');
+                if (contact) {
+                    const top = contact.offsetTop - 80;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                    contact.classList.add('ring-4', 'ring-indigo-200', 'ring-opacity-50');
+                    setTimeout(() => contact.classList.remove('ring-4', 'ring-indigo-200', 'ring-opacity-50'), 2000);
                 }
             }, 350);
         }
-        
-        // Close modal when clicking outside
-        document.getElementById('packageModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closePackageModal();
-            }
-        });
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closePackageModal();
-            }
-        });
-
-        // Contact Form Handling
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const form = e.target;
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const submitText = document.getElementById('submitText');
-            const loadingText = document.getElementById('loadingText');
-            const successMessage = document.getElementById('successMessage');
-            const errorMessage = document.getElementById('errorMessage');
-            
-            // Hide any existing messages
-            successMessage.classList.add('hidden');
-            errorMessage.classList.add('hidden');
-            
-            // Show loading state
-            submitText.classList.add('hidden');
-            loadingText.classList.remove('hidden');
-            submitBtn.disabled = true;
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    // Show success message
-                    successMessage.classList.remove('hidden');
-                    form.reset();
-                    
-                    // Scroll to success message
-                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    
-                    // Hide success message after 10 seconds
-                    setTimeout(() => {
-                        successMessage.classList.add('hidden');
-                    }, 10000);
-                } else {
-                    // Show error message
-                    errorMessage.classList.remove('hidden');
-                    errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    
-                    // Hide error message after 10 seconds
-                    setTimeout(() => {
-                        errorMessage.classList.add('hidden');
-                    }, 10000);
-                }
-            } catch (error) {
-                // Show error message
-                errorMessage.classList.remove('hidden');
-                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                
-                // Hide error message after 10 seconds
-                setTimeout(() => {
-                    errorMessage.classList.add('hidden');
-                }, 10000);
-            } finally {
-                // Reset button state
-                submitText.classList.remove('hidden');
-                loadingText.classList.add('hidden');
-                submitBtn.disabled = false;
-                
-                // Reinitialize lucide icons
-                lucide.createIcons();
-            }
-        });
-        
-        // Scroll to top on page refresh/load
-        window.addEventListener('load', function() {
-            // Scroll to top smoothly
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-            
-            // Also ensure we're at the top hash
-            if (window.location.hash) {
-                window.location.hash = '';
-            }
-        });
-        
-        // Handle browser back/forward buttons to return to top
-        window.addEventListener('popstate', function() {
-            setTimeout(() => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }, 100);
-        });
-        
-        // Handle page visibility change (when user switches tabs and comes back)
-        document.addEventListener('visibilitychange', function() {
-            if (!document.hidden) {
-                setTimeout(() => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                }, 100);
-            }
-        });
     </script>
-    <!-- Service Packages Modal -->
-    <div id="packageModal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-[200] hidden opacity-0 transition-all duration-300">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-300 shadow-2xl">
-                <!-- Modal Header -->
-                <div class="sticky top-0 bg-gradient-to-r from-white via-white to-white border-b border-slate-100 p-8 rounded-t-3xl z-10 backdrop-blur-lg bg-opacity-95">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center gap-5">
-                            <div id="modalServiceIcon" class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center shadow-lg border border-indigo-200">
-                                <i data-lucide="code" class="w-8 h-8 text-indigo-600"></i>
-                            </div>
-                            <div>
-                                <h3 id="modalServiceTitle" class="text-3xl font-black text-textMain bg-gradient-to-r from-slate-900 to-slate-600 bg-clip-text text-transparent">Web Development</h3>
-                                <p class="text-textMuted text-base font-medium mt-1">Choose the perfect package tailored to your business needs</p>
-                            </div>
-                        </div>
-                        <button onclick="closePackageModal()" class="w-12 h-12 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-all duration-300 hover:scale-110 group">
-                            <i data-lucide="x" class="w-6 h-6 text-slate-600 group-hover:text-slate-800"></i>
-                        </button>
-                    </div>
-                    
-                    <!-- Package Comparison Badge -->
-                    <div class="flex items-center gap-2 text-sm text-textMuted">
-                        <i data-lucide="info" class="w-4 h-4"></i>
-                        <span>Compare packages and choose the best fit for your project</span>
-                    </div>
-                </div>
-
-                <!-- Packages Content -->
-                <div class="p-8 bg-gradient-to-br from-slate-50 via-white to-white">
-                    <!-- Package Cards -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-                        <!-- Package 1 - Starter -->
-                        <div class="relative group">
-                            <!-- Popular Badge -->
-                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
-                                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
-                                    <i data-lucide="star" class="w-4 h-4"></i>
-                                    Most Popular
-                                </div>
-                            </div>
-                            
-                            <div class="bg-gradient-to-br from-indigo-50 via-white to-purple-50 border-2 border-indigo-200 rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
-                                <!-- Background Decoration -->
-                                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-200/20 to-purple-200/20 rounded-full blur-2xl"></div>
-                                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-br from-indigo-200/20 to-purple-200/20 rounded-full blur-xl"></div>
-                                
-                                <div class="relative z-10">
-                                    <div class="flex items-center justify-between mb-6">
-                                        <div>
-                                            <h4 class="text-2xl font-black text-textMain mb-2">Starter Package</h4>
-                                            <div class="flex items-center gap-2">
-                                                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                                <span class="text-green-600 text-sm font-semibold">Ready to start</span>
-                                            </div>
-                                        </div>
-                                        <div class="text-right">
-                                            <div class="flex items-baseline justify-end">
-                                                <span class="text-5xl font-black text-indigo-600">₹39,999</span>
-                                            </div>
-                                            <span class="text-textMuted text-sm font-medium">one-time payment</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <p class="text-textMuted text-base font-medium mb-8 leading-relaxed">Perfect for small businesses, startups, and companies looking to establish their digital presence with professional quality.</p>
-                                    
-                                    <!-- Features List -->
-                                    <div class="space-y-4 mb-8">
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-green-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">Professional responsive website design (5-7 pages)</span>
-                                        </div>
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-green-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">Mobile-first responsive design for all devices</span>
-                                        </div>
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-green-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">Basic on-page SEO optimization with meta tags</span>
-                                        </div>
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-green-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">Contact form with email integration</span>
-                                        </div>
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-green-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">6 months technical support & maintenance</span>
-                                        </div>
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-green-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">WordPress CMS with basic training</span>
-                                        </div>
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-green-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">Google Analytics setup & integration</span>
-                                        </div>
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-green-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">Social media integration (Facebook, Instagram)</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <button type="submit" id="submitBtn" class="w-full px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary to-indigo-600 text-white rounded-full font-black hover:from-indigo-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3 tracking-wide text-base sm:text-base">
-                                <span id="submitText">Send Message</span>
-                                <span id="loadingText" class="hidden">Sending...</span>
-                                <i data-lucide="send" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-                            </button>
-                            </div>
-                        </div>
-
-                        <!-- Package 2 - Enterprise -->
-                        <div class="relative group">
-                            <!-- Enterprise Badge -->
-                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
-                                <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
-                                    <i data-lucide="crown" class="w-4 h-4"></i>
-                                    Premium
-                                </div>
-                            </div>
-                            
-                            <div class="bg-gradient-to-br from-emerald-50 via-white to-teal-50 border-2 border-emerald-200 rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
-                                <!-- Background Decoration -->
-                                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-200/20 to-teal-200/20 rounded-full blur-2xl"></div>
-                                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-br from-emerald-200/20 to-teal-200/20 rounded-full blur-xl"></div>
-                                
-                                <div class="relative z-10">
-                                    <div class="flex items-center justify-between mb-6">
-                                        <div>
-                                            <h4 class="text-2xl font-black text-textMain mb-2">Enterprise Package</h4>
-                                            <div class="flex items-center gap-2">
-                                                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                                                <span class="text-emerald-600 text-sm font-semibold">Custom solution</span>
-                                            </div>
-                                        </div>
-                                        <div class="text-right">
-                                            <div class="flex items-baseline justify-end">
-                                                <span class="text-5xl font-black text-emerald-600">Custom</span>
-                                            </div>
-                                            <span class="text-textMuted text-sm font-medium">tailored pricing</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <p class="text-textMuted text-base font-medium mb-8 leading-relaxed">Advanced solutions for large-scale projects, enterprises, and businesses requiring comprehensive digital transformation.</p>
-                                    
-                                    <!-- Features List -->
-                                    <div class="space-y-4 mb-8">
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-emerald-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">Unlimited pages with advanced custom functionality</span>
-                                        </div>
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-emerald-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">Custom database design & REST API development</span>
-                                        </div>
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-emerald-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">Advanced SEO with schema markup & speed optimization</span>
-                                        </div>
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-emerald-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">E-commerce integration with payment gateways</span>
-                                        </div>
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-emerald-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">24/7 priority support with dedicated account manager</span>
-                                        </div>
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-emerald-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">Advanced analytics dashboard & reporting</span>
-                                        </div>
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-emerald-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">Multi-language support & CDN integration</span>
-                                        </div>
-                                        <div class="flex items-start gap-3 group/item">
-                                            <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-emerald-200 transition-colors">
-                                                <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i>
-                                            </div>
-                                            <span class="text-textMain text-base font-medium leading-relaxed">Security audit & SSL certificate implementation</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <button onclick="closePackageModalAndNavigateToContact()" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-4 rounded-2xl font-bold hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3">
-                                        <i data-lucide="phone" class="w-5 h-5"></i>
-                                        Contact Sales Team
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Technology Stack Section -->
-                    <div class="mt-12 p-8 bg-gradient-to-br from-slate-50 via-white to-indigo-50 rounded-3xl border border-slate-200 shadow-lg relative overflow-hidden">
-                        <!-- Background Decoration -->
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-indigo-100/30 to-purple-100/30 rounded-full blur-3xl"></div>
-                        <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-100/30 to-cyan-100/30 rounded-full blur-2xl"></div>
-                        
-                        <div class="relative z-10">
-                            <!-- Section Header -->
-                            <div class="flex items-center gap-4 mb-8">
-                                <div class="w-14 h-14 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl flex items-center justify-center shadow-lg border border-indigo-200">
-                                    <i data-lucide="code-2" class="w-7 h-7 text-indigo-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-2xl font-black text-textMain bg-gradient-to-r from-slate-900 to-slate-600 bg-clip-text text-transparent">Our Technology Stack</h4>
-                                    <p class="text-textMuted text-base font-medium mt-1">Cutting-edge technologies powering exceptional digital solutions</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Tech Categories Grid -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                                <!-- Frontend -->
-                                <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <div class="w-10 h-10 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i data-lucide="monitor" class="w-5 h-5 text-blue-600"></i>
-                                        </div>
-                                        <h5 class="font-bold text-textMain text-lg">Frontend</h5>
-                                    </div>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">React</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Vue.js</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">TypeScript</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-cyan-100 to-blue-100 text-cyan-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Tailwind</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-yellow-100 to-orange-100 text-yellow-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">JavaScript</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Next.js</span>
-                                    </div>
-                                </div>
-                                
-                                <!-- Backend -->
-                                <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <div class="w-10 h-10 bg-gradient-to-br from-green-100 to-emerald-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i data-lucide="server" class="w-5 h-5 text-green-600"></i>
-                                        </div>
-                                        <h5 class="font-bold text-textMain text-lg">Backend</h5>
-                                    </div>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-red-100 to-pink-100 text-red-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Node.js</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Python</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Django</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Spring</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Express</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-red-100 to-rose-100 text-red-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Ruby</span>
-                                    </div>
-                                </div>
-                                
-                                <!-- Database & Cloud -->
-                                <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <div class="w-10 h-10 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i data-lucide="cloud" class="w-5 h-5 text-purple-600"></i>
-                                        </div>
-                                        <h5 class="font-bold text-textMain text-lg">Database & Cloud</h5>
-                                    </div>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">AWS</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Google Cloud</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Azure</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-yellow-100 to-orange-100 text-yellow-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">MongoDB</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">PostgreSQL</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Redis</span>
-                                    </div>
-                                </div>
-                                
-                                <!-- DevOps & Tools -->
-                                <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <div class="w-10 h-10 bg-gradient-to-br from-orange-100 to-red-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i data-lucide="settings" class="w-5 h-5 text-orange-600"></i>
-                                        </div>
-                                        <h5 class="font-bold text-textMain text-lg">DevOps & Tools</h5>
-                                    </div>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Docker</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Kubernetes</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">GitHub</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">CI/CD</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Terraform</span>
-                                        <span class="px-3 py-1.5 bg-gradient-to-r from-red-100 to-rose-100 text-red-700 text-xs font-bold rounded-full hover:scale-105 transition-transform">Jenkins</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Info Banner -->
-                            <div class="p-6 bg-gradient-to-r from-indigo-50 via-blue-50 to-purple-50 rounded-2xl border border-indigo-200 relative overflow-hidden">
-                                <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-indigo-100/50 to-purple-100/50 rounded-full blur-xl"></div>
-                                <div class="relative z-10 flex items-center gap-4">
-                                    <div class="w-12 h-12 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                                        <i data-lucide="sparkles" class="w-6 h-6 text-indigo-600"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-indigo-900 text-base font-semibold leading-relaxed">
-                                            We are proficient in all modern technologies and can adapt to any specific tech stack requirements for your project.
-                                        </p>
-                                        <p class="text-indigo-700 text-sm font-medium mt-2">
-                                            🚀 Let's build something amazing together!
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="script.js"></script>
 </body>
 
