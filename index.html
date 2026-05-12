@@ -29,6 +29,8 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <!-- Vercel Speed Insights -->
+    <script defer src="/_vercel/speed-insights/script.js"></script>
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/lucide@0.473.0/dist/umd/lucide.js"></script>
     <style>
@@ -179,12 +181,13 @@
 
     </div>
     <!-- Navbar Wrapper -->
-    <div class="fixed w-full top-6 z-40 px-6 flex justify-center pointer-events-none">
+    <div class="fixed w-full top-6 z-40 flex justify-center pointer-events-none">
         <nav id="navbar"
-            class="pointer-events-auto transition-all duration-300 py-2 px-6 md:px-8 bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg shadow-slate-200/50 rounded-full flex justify-between items-center w-full max-w-5xl">
-            <div class="cursor-pointer flex items-center h-8 md:h-10">
-                <img src="logo.png" alt="Callybre Logo"
-                    class="h-full invert object-contain scale-[2] md:scale-[2.5] origin-left">
+            class="pointer-events-auto transition-all duration-300 py-3 px-6 bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg shadow-slate-200/50 rounded-full flex justify-between items-center w-[92%] max-w-5xl">
+            <div class="flex items-center flex-shrink-0">
+                <a href="#home" class="cursor-pointer flex items-center h-8 md:h-10">
+                    <img src="logo.png" alt="Callybre Logo" class="h-full invert object-contain">
+                </a>
             </div>
 
             <div class="hidden md:flex space-x-8 items-center text-sm font-bold text-textMuted mx-8 tracking-wide">
@@ -224,8 +227,8 @@
                     Us</a>
             </div>
 
-            <button type="button" class="md:hidden text-textMain focus:outline-none ml-4 cursor-pointer" id="mobile-menu-btn">
-                <i data-lucide="menu"></i>
+            <button type="button" class="md:hidden flex items-center justify-center text-textMain focus:outline-none cursor-pointer" id="mobile-menu-btn" aria-label="Open menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </nav>
         
@@ -884,6 +887,67 @@
     </section>
 
     <!-- Portfolio Grid -->
+    <!-- Our Process Section -->
+    <section id="process" class="py-24 px-6 md:px-12 bg-white relative z-10 overflow-hidden border-t border-slate-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <span class="inline-block px-4 py-1.5 bg-indigo-50 text-indigo-600 text-xs font-black tracking-widest mb-4 rounded-full uppercase border border-indigo-100">Methodology</span>
+                <h2 class="text-5xl md:text-7xl font-black text-textMain tracking-tighter">How We Bring Your <br><span class="text-indigo-600">Vision to Life</span></h2>
+                <p class="text-textMuted text-xl font-medium mt-6 max-w-2xl mx-auto">A systematic, data-driven approach designed to deliver excellence at every stage of development.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                <!-- Step 1 -->
+                <div class="relative z-10 group reveal">
+                    <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-indigo-200 group-hover:rotate-6 transition-transform">
+                            <i data-lucide="search" class="w-8 h-8"></i>
+                        </div>
+                        <span class="text-indigo-600 font-black text-sm uppercase tracking-widest mb-2 block">Step 01</span>
+                        <h3 class="text-2xl font-black text-textMain mb-4">Discovery</h3>
+                        <p class="text-textMuted font-medium leading-relaxed">We dive deep into your business goals, target audience, and market landscape to build a solid foundation.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 group reveal" style="transition-delay: 0.1s">
+                    <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-indigo-200 group-hover:rotate-6 transition-transform">
+                            <i data-lucide="layers" class="w-8 h-8"></i>
+                        </div>
+                        <span class="text-indigo-600 font-black text-sm uppercase tracking-widest mb-2 block">Step 02</span>
+                        <h3 class="text-2xl font-black text-textMain mb-4">Strategy</h3>
+                        <p class="text-textMuted font-medium leading-relaxed">Crafting a bespoke roadmap that aligns technical requirements with your overarching business objectives.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 group reveal" style="transition-delay: 0.2s">
+                    <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-indigo-200 group-hover:rotate-6 transition-transform">
+                            <i data-lucide="code-2" class="w-8 h-8"></i>
+                        </div>
+                        <span class="text-indigo-600 font-black text-sm uppercase tracking-widest mb-2 block">Step 03</span>
+                        <h3 class="text-2xl font-black text-textMain mb-4">Execution</h3>
+                        <p class="text-textMuted font-medium leading-relaxed">Our agile development process ensures transparent, iterative progress with high-quality, clean code.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative z-10 group reveal" style="transition-delay: 0.3s">
+                    <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-indigo-200 group-hover:rotate-6 transition-transform">
+                            <i data-lucide="check-circle" class="w-8 h-8"></i>
+                        </div>
+                        <span class="text-indigo-600 font-black text-sm uppercase tracking-widest mb-2 block">Step 04</span>
+                        <h3 class="text-2xl font-black text-textMain mb-4">Delivery</h3>
+                        <p class="text-textMuted font-medium leading-relaxed">Rigorous testing and seamless deployment followed by dedicated post-launch support and optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="portfolio" class="py-20 px-6 md:px-12 bg-white relative z-10 border-t border-slate-100">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -1764,6 +1828,85 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 px-6 md:px-12 bg-surface relative z-10 overflow-hidden border-t border-slate-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <span class="inline-block px-4 py-1.5 bg-emerald-50 text-emerald-600 text-xs font-black tracking-widest mb-4 rounded-full uppercase border border-emerald-100">Social Proof</span>
+                <h2 class="text-5xl md:text-7xl font-black text-textMain tracking-tighter">Trusted by <span class="text-emerald-600">Visionaries</span></h2>
+                <p class="text-textMuted text-xl font-medium mt-6 max-w-2xl mx-auto">Don't just take our word for it. Here's what industry leaders say about collaborating with Callybre.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm reveal relative group">
+                    <div class="absolute top-8 right-8 text-slate-100 group-hover:text-indigo-100 transition-colors">
+                        <i data-lucide="quote" class="w-12 h-12"></i>
+                    </div>
+                    <div class="flex gap-1 mb-6">
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                    </div>
+                    <p class="text-textMain text-lg font-medium leading-relaxed mb-8 italic">"Callybre transformed our digital infrastructure. Their attention to detail and ability to scale complex AI workflows was beyond our expectations."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-black">JD</div>
+                        <div>
+                            <h4 class="font-black text-textMain">James Dalton</h4>
+                            <p class="text-textMuted text-xs font-bold uppercase tracking-wider">CEO, TechFlow AI</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm reveal relative group" style="transition-delay: 0.1s">
+                    <div class="absolute top-8 right-8 text-slate-100 group-hover:text-indigo-100 transition-colors">
+                        <i data-lucide="quote" class="w-12 h-12"></i>
+                    </div>
+                    <div class="flex gap-1 mb-6">
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                    </div>
+                    <p class="text-textMain text-lg font-medium leading-relaxed mb-8 italic">"The team at Callybre delivered a stunning website that increased our conversion rate by 40%. They are true partners in every sense of the word."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 font-black">SR</div>
+                        <div>
+                            <h4 class="font-black text-textMain">Sarah Reynolds</h4>
+                            <p class="text-textMuted text-xs font-bold uppercase tracking-wider">Founder, Bloom Digital</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm reveal relative group" style="transition-delay: 0.2s">
+                    <div class="absolute top-8 right-8 text-slate-100 group-hover:text-indigo-100 transition-colors">
+                        <i data-lucide="quote" class="w-12 h-12"></i>
+                    </div>
+                    <div class="flex gap-1 mb-6">
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                    </div>
+                    <p class="text-textMain text-lg font-medium leading-relaxed mb-8 italic">"Their expertise in SEO and performance marketing helped us dominate the local market within months. Highly professional and results-oriented."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-black">MK</div>
+                        <div>
+                            <h4 class="font-black text-textMain">Michael Klein</h4>
+                            <p class="text-textMuted text-xs font-bold uppercase tracking-wider">MD, Sterling Group</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Blog Section -->
     <section id="blog" class="py-20 px-6 md:px-12 bg-surface relative z-10 border-t border-slate-100">
         <div class="max-w-7xl mx-auto">
@@ -1773,10 +1916,76 @@
                 <p class="text-textMuted text-2xl font-medium max-w-2xl mx-auto">Stay ahead of the curve with our latest articles on technology, digital marketing, and scaling your business.</p>
             </div>
 
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
                 <!-- Blog Card 1 -->
-                <a href="javascript:void(0)" onclick="alert('Blog coming soon!')" class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(79,70,229,0.15)] border border-slate-200 hover:border-indigo-200 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
-                    <div class="relative h-60 overflow-hidden">
+                <a href="javascript:void(0)" onclick="alert('Blog coming soon!')" class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 hover:border-indigo-200 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
+                    <div class="relative h-60 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800" alt="AI in Business" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-widest rounded-full">AI & Tech</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 text-slate-400 text-xs font-bold uppercase tracking-widest mb-4">
+                            <span>May 10, 2026</span>
+                            <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                            <span>8 min read</span>
+                        </div>
+                        <h3 class="text-xl font-black text-textMain mb-4 group-hover:text-indigo-600 transition-colors">The Future of Generative AI in Enterprise Solutions</h3>
+                        <p class="text-textMuted text-sm font-medium leading-relaxed flex-grow">Exploring how LLMs and autonomous agents are revolutionizing workflow automation in 2026.</p>
+                        <div class="mt-6 pt-6 border-t border-slate-50 flex items-center justify-between">
+                            <span class="text-indigo-600 font-black text-xs uppercase tracking-widest group-hover:mr-2 transition-all">Read More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 text-indigo-600"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Blog Card 2 -->
+                <a href="javascript:void(0)" onclick="alert('Blog coming soon!')" class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 hover:border-indigo-200 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
+                    <div class="relative h-60 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="SEO Strategy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-emerald-600 text-white text-[10px] font-black uppercase tracking-widest rounded-full">Marketing</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 text-slate-400 text-xs font-bold uppercase tracking-widest mb-4">
+                            <span>May 05, 2026</span>
+                            <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                            <span>6 min read</span>
+                        </div>
+                        <h3 class="text-xl font-black text-textMain mb-4 group-hover:text-emerald-600 transition-colors">Mastering Semantic SEO: Beyond Keyword Research</h3>
+                        <p class="text-textMuted text-sm font-medium leading-relaxed flex-grow">How to build topical authority and dominate search results in a post-AI search era.</p>
+                        <div class="mt-6 pt-6 border-t border-slate-50 flex items-center justify-between">
+                            <span class="text-emerald-600 font-black text-xs uppercase tracking-widest group-hover:mr-2 transition-all">Read More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 text-emerald-600"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Blog Card 3 -->
+                <a href="javascript:void(0)" onclick="alert('Blog coming soon!')" class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 hover:border-indigo-200 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
+                    <div class="relative h-60 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800" alt="Startup Growth" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-purple-600 text-white text-[10px] font-black uppercase tracking-widest rounded-full">Strategy</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 text-slate-400 text-xs font-bold uppercase tracking-widest mb-4">
+                            <span>April 28, 2026</span>
+                            <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                            <span>10 min read</span>
+                        </div>
+                        <h3 class="text-xl font-black text-textMain mb-4 group-hover:text-purple-600 transition-colors">Scaling Your SaaS: From MVP to Product-Market Fit</h3>
+                        <p class="text-textMuted text-sm font-medium leading-relaxed flex-grow">Key milestones and technical hurdles for startups looking to reach their first $1M ARR.</p>
+                        <div class="mt-6 pt-6 border-t border-slate-50 flex items-center justify-between">
+                            <span class="text-purple-600 font-black text-xs uppercase tracking-widest group-hover:mr-2 transition-all">Read More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 text-purple-600"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
                         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Future of Web Dev" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div class="absolute top-8 left-4">
@@ -2212,8 +2421,8 @@
 
     <!-- Floating Icons -->
     <a href="https://www.instagram.com/callybre_?igsh=MXR0aWhoNDF3aXI0eA==" target="_blank"
-        class="fixed bottom-6 left-6 z-50 w-14 h-14 bg-white/90 backdrop-blur border border-slate-200 rounded-full flex items-center justify-center shadow-lg hover:bg-slate-50 hover:scale-110 hover:-translate-y-2 hover:rotate-6 transition-all duration-300 animate-floatingSmooth cursor-pointer">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-7 h-7">
+        class="fixed bottom-6 left-6 z-50 w-12 h-12 bg-white/90 backdrop-blur border border-slate-200 rounded-full flex items-center justify-center shadow-lg hover:bg-slate-50 transition-all duration-300 floating-social cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-6 h-6">
             <defs>
                 <linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">
                     <stop offset="0%" stop-color="#f09433" />
@@ -2228,9 +2437,9 @@
         </svg>
     </a>
     <a href="https://wa.me/919111326119" target="_blank"
-        class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] backdrop-blur border border-[#1DA851] rounded-full flex items-center justify-center shadow-lg text-white hover:bg-[#20bd5a] hover:scale-110 hover:-translate-y-2 hover:-rotate-6 transition-all duration-300 animate-floatingSmooth cursor-pointer"
+        class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-[#25D366] backdrop-blur border border-[#1DA851] rounded-full flex items-center justify-center shadow-lg text-white hover:bg-[#20bd5a] transition-all duration-300 floating-social cursor-pointer"
         style="animation-delay: 1.5s;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-8 h-8" fill="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-7 h-7" fill="currentColor">
             <path
                 d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
         </svg>

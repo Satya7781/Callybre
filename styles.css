@@ -15,11 +15,11 @@ body {
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(15, 23, 42, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
 }
 
 .bento-card {
@@ -89,18 +89,27 @@ body {
 }
 
 /* Timeline Process Line */
-.timeline-line.active {
-    transform: scale(1);
+.timeline-track {
+    background: linear-gradient(to bottom, #f1f5f9 0%, #2563eb 20%, #2563eb 80%, #f1f5f9 100%);
+    opacity: 0.2;
 }
 
-.process-step.active .border-slate-200 {
-    border-color: #2563eb; /* primary */
-    color: #ffffff;
-    background-color: #2563eb;
-    box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+.timeline-line.active {
+    transform: scale(1);
+    opacity: 0.8;
 }
-.process-step.active .text-slate-400 {
-    color: #ffffff;
+
+/* Floating Social Refinement */
+.floating-social {
+    opacity: 0.8;
+    transform: scale(0.9);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.floating-social:hover {
+    opacity: 1;
+    transform: scale(1.1) translateY(-8px);
+    box-shadow: 0 15px 30px -10px rgba(79, 70, 229, 0.3);
 }
 
 /* Infinite Scroll Marquee */
@@ -290,18 +299,26 @@ section.bg-surface .marquee-container::after {
     #navbar {
         top: 1rem !important;
         width: 92% !important;
-        padding: 0.6rem 1.25rem !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
+        padding: 0.75rem 1.25rem !important;
         z-index: 100 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        left: 4% !important;
     }
 
     #navbar img {
         height: 28px !important;
         width: auto !important;
-        scale: 1.2 !important;
         transform: none !important;
         object-fit: contain !important;
+        display: block !important;
+    }
+
+    #mobile-menu-btn {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     #mobile-menu-panel {
