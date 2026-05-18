@@ -403,9 +403,9 @@ section.bg-surface .marquee-container::after {
         gap: 1.5rem !important;
     }
 
-    #portfolio .md\:col-span-8, #portfolio .md\:col-span-4 {
+    #portfolio .md\:col-span-12, #portfolio .md\:col-span-8, #portfolio .md\:col-span-4 {
         width: 100% !important;
-        min-height: 400px !important;
+        min-height: 500px !important;
     }
 
     #portfolio .p-10, #portfolio .p-8 {
