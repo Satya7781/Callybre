@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Callybre</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#ffffff',
+                        surface: '#f8fafc',
+                        primary: '#2563eb',
+                        primaryDark: '#1d4ed8',
+                        secondary: '#0d9488',
+                        textMain: '#09090b',
+                        textMuted: '#52525b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-surface text-textMain font-sans antialiased overflow-x-hidden selection:bg-primary/20 flex flex-col min-h-screen">
+
+    <!-- Simple Navbar -->
+    <div class="w-full pt-6 flex justify-center z-50 absolute top-0">
+        <nav id="navbar" class="py-3 px-6 bg-white/70 backdrop-blur-xl border border-white/40 shadow-sm rounded-full flex justify-between items-center w-[92%] max-w-5xl">
+            <a href="index.html" class="cursor-pointer flex items-center h-8 md:h-10 hover:opacity-80">
+                <img src="logo.png" alt="Callybre Logo" class="h-full invert object-contain">
+            </a>
+            <a href="index.html" class="hidden md:block px-6 py-2 bg-textMain text-white rounded-full font-bold hover:bg-primary hover:scale-105 transition-all duration-300 text-sm">Back to Home</a>
+            <a href="index.html" class="md:hidden w-10 h-10 bg-textMain text-white rounded-full flex items-center justify-center hover:bg-primary transition-all duration-300">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center pt-32 pb-24 px-6 relative">
+        <!-- Glows -->
+        <div class="absolute top-[20%] left-[20%] w-[40rem] h-[40rem] bg-primary/10 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+        
+        <div class="max-w-3xl mx-auto text-center relative z-10">
+            <div class="mb-10 inline-flex items-center justify-center w-24 h-24 bg-indigo-50 rounded-[2rem] border border-indigo-100 shadow-sm">
+                <i data-lucide="pen-tool" class="w-10 h-10 text-primary"></i>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black mb-8 text-textMain tracking-tighter">Insights <br><span class="text-primary">Loading...</span></h1>
+            <p class="text-textMuted text-2xl font-medium mb-12 leading-relaxed">We're curating deep dives into digital transformation, AI, and design excellence. Check back soon for our first batch of articles.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="index.html" class="px-10 py-5 bg-textMain text-white rounded-full font-black hover:bg-primary hover:scale-105 transition-all duration-300 shadow-xl flex items-center gap-3 justify-center">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i> Return Home
+                </a>
+                <a href="index.html#contact" class="px-10 py-5 bg-white text-textMain border border-slate-200 rounded-full font-black hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 flex items-center gap-3 justify-center">
+                    Get in Touch <i data-lucide="mail" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto py-8 text-center text-sm font-bold text-slate-500 border-t border-slate-200">
+        <p>&copy; 2026 Callybre. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
